@@ -12,9 +12,6 @@ using System.Timers;
 
 namespace Prototype
 {
-    /// <summary>
-    // is this working?
-    /// </summary>
     public partial class main : Form
     {    
         
@@ -85,19 +82,10 @@ namespace Prototype
         private void textBox1_DragDrop(object sender,
         System.Windows.Forms.DragEventArgs e)
         {
-            int i;
-            String s;
+           
+            textBox1.Text = textBox1.Text.Insert(textBox1.SelectionStart, e.Data.GetData(DataFormats.Text).ToString())+"\r\n";
+            textBox1.Select(textBox1.Text.Length, 0);
 
-            // Get start position to drop the text.  
-            i = textBox1.SelectionStart;
-            s = textBox1.Text.Substring(i);
-            textBox1.Text = textBox1.Text.Substring(0, i);
-
-            // Drop the text on to the RichTextBox.  
-            textBox1.Text = textBox1.Text +
-               e.Data.GetData(DataFormats.Text).ToString();
-            textBox1.Text = s + textBox1.Text ;
-         
         }
 
 
@@ -109,14 +97,14 @@ namespace Prototype
             {
                 int r = tableLayoutPanel1.GetRow(pb);
                 int c = tableLayoutPanel1.GetColumn(pb);
-                if (blocked[r, c])
+                if (grid[r,c].getBlocked())
                 {
                     pb.Image = blank;
-                    blocked[r, c] = false; 
+                    grid[r,c].setBlocked(); 
                 }
                 else {
                     pb.Image = block;
-                    blocked[r, c] = true;
+                    grid[r, c].setBlocked();
                 }
              
             }
@@ -152,6 +140,12 @@ namespace Prototype
             pictureBoxMove.DoDragDrop("Erase\r\n", DragDropEffects.All);
         }
 
+        private void pictureBoxWhile_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
+        {
+            label1.Text = "while(){\r\n }\r";
+            pictureBoxMove.DoDragDrop("while(){\r\n\r\n}\r\n", DragDropEffects.All);
+        }
+
 
         //*******************************
 
@@ -159,54 +153,189 @@ namespace Prototype
         {
             String s = textBox1.Text.ToString();
             String[] prog = s.Split('\n');
-            //bool loop = false;
-            //int place = 0;
-            //bool condition;
+            bool ifTrue = false;
+            bool whileLoop = false;
+            bool getActions = false;                //Signifies if getting the contents of the loop or not
+            string condition = "";                  //Condition that needs to be met for loop
+            string[] x;                             //While loop string
+            string[] loopActions = new string[100]; //actions performed in loop
+            int numActions = 0;                     //Numbers of actions in a loop
+            int place = 0;                          //Place in loop
+            bool forLoop = false;
+            bool greaterthan = false;              //Show whether for loop is greater than or less than
+            int startValue = 0;                    //Starting value for a for loop
             foreach (string progItem in prog)
             {
                 label1.Text = progItem;
                 
-                //if(progItem == "while\r")
-                //{ 
-                //}
-                //else if(progItem == "{\r")
-                //{
-                //    loop = true;
-                //}
-                //else if (loop)
-                //{
-                //    string_loop[place] = progItem;
-                //    place++;
-                //}
-                //else if(progItem == "}\r")
-                //{
-                //    loop = false;
-                //}
-               if (progItem == "Move\r") 
+                if (progItem.Contains("while")) //While loop
                 {
-                    move();
+                    whileLoop = true;
+                    getActions = true;
+                    x = progItem.Split('(');
+                    
+                    condition = x[1];
+                
                 }
-                else if (progItem == "TurnLeft\r")
+                else if (progItem.Contains("if"))
                 {
-                    turn();
+                    ifTrue = true;
+                    x = progItem.Split('(');
+                    condition = x[1];
+                    getActions = true;
                 }
-                else if (progItem == "Paint\r")
+                else if (progItem.Contains("for"))
                 {
-                    if (!grid[activeRow, activeColumn].getPaint())
+                    forLoop = true;
+                    getActions = true;
+                    x = progItem.Split(';');
+                    condition = x[1];
+                    string y = x[0];
+                    startValue = int.Parse(x[0].Split('=')[1]);
+                    if (progItem.Contains('>'))
                     {
-                        grid[activeRow, activeColumn].setImage(paint);
-                        grid[activeRow, activeColumn].setPaint();
+                        greaterthan = true;
                     }
-
                 }
-                else if(progItem == "Erase\r")
+                else if (getActions) //While loop
                 {
-                    grid[activeRow, activeColumn].setImage(arrow);
-                    grid[activeRow, activeColumn].setPaint();
+                    if(progItem != "}\r")
+                    {
+                        loopActions[place] = progItem;
+                        place++;
+                        numActions++;
+                    }
+                    else
+                    {
+                        label1.Text = "finsihed";
+                        getActions = false;
+                        place = 0;
+                    }
                 }
+                else if (whileLoop) //While loop
+                {
+                    if(condition.Contains("blocked"))
+                    {
+                        while (moveIsValid())
+                        {
+                            for (int i = 0; i < numActions; i++)
+                            {
+                                    checkAction(loopActions[i]);
+                                    await Task.Delay(1000);
+                                
+                            }
+                            
+                        }
 
-                await Task.Delay(1000);
+                    }
+                }
+                else if (ifTrue)
+                {
+                    if (condition.Contains("blocked"))
+                    {
+                        if (moveIsValid())
+                        {
+                            for (int i = 0; i < numActions; i++)
+                            {
+                                checkAction(loopActions[i]);
+                                await Task.Delay(1000);
+
+                            }
+
+                        }
+
+                    }
+                    if (condition.Contains("painted"))
+                    {
+                        if (grid[activeRow, activeColumn].getPaint())
+                        {
+                            for (int i = 0; i < numActions; i++)
+                            {
+                                checkAction(loopActions[i]);
+                                await Task.Delay(1000);
+
+                            }
+
+                        }
+
+                    }
+                }
+                else if (forLoop)
+                {
+                    //int i = int.Parse(condition.Split('<')[1]);
+                    //int j = startValue;
+                    for (int i = startValue; i < int.Parse(condition.Split('<')[1]); i++)
+                    {
+                        for (int j = 0; j < numActions; j++)
+                        {
+                            checkAction(loopActions[j]);
+                            await Task.Delay(1000);
+                        }
+
+                    }
+                }
+                else
+                {
+                    checkAction(progItem);
+                    await Task.Delay(1000);
+                }
+                
+
+               
            
+            }
+        }
+
+        private int nextRow()
+        {
+            if (direction == 2)
+            {
+                return activeRow - 1;
+            }
+            else if (direction == 4)
+            {
+                return activeRow + 1;
+            }
+            else
+            {
+                return activeRow;
+            }
+        }
+
+        private int nextCol()
+        {
+            if (direction == 1)
+            {
+                return activeColumn+1;
+            }
+            else if (direction == 3)
+            {
+                return activeColumn - 1;
+            }
+            else
+            {
+                return activeColumn;
+            }
+        }
+
+        private bool moveIsValid()
+        {
+            int r = nextRow();
+            int c = nextCol();
+            if((r <= 6 && r >=0) && (c <= 6 && c >= 0)) {
+                
+                if (grid[r, c].getBlocked())
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            else
+            {
+                return false;
             }
         }
 
@@ -225,6 +354,32 @@ namespace Prototype
        
         //Movement functions
 
+        public void checkAction(string action)
+        {
+            if (action == "Move\r")
+            {
+                move();
+            }
+            else if (action == "TurnLeft\r")
+            {
+                turn();
+            }
+            else if (action == "Paint\r")
+            {
+                if (!grid[activeRow, activeColumn].getPaint())
+                {
+                    grid[activeRow, activeColumn].setImage(paint);
+                    grid[activeRow, activeColumn].setPaint();
+                }
+
+            }
+            else if (action == "Erase\r")
+            {
+                grid[activeRow, activeColumn].setImage(arrow);
+                grid[activeRow, activeColumn].setPaint();
+            }
+
+        }
         public void turn()
         {
             if (grid[activeRow, activeColumn].getPaint())
@@ -252,100 +407,35 @@ namespace Prototype
         }
         public void move() {
           
-                if (direction == 1 && activeColumn + 1 <= 6 && !blocked[activeRow, activeColumn + 1])
-                {
 
-                     if (grid[activeRow, activeColumn].getImage() == paint)
+                if (moveIsValid())
+                {
+                int r = nextRow();
+                int c = nextCol();
+                     if (grid[activeRow, activeColumn].getPaint())
                      {
                        grid[activeRow, activeColumn].setImage(black);
                      }
                       else
                      {
                         grid[activeRow, activeColumn].setImage(blank);
-                }
+                        }
 
 
-                    if (grid[activeRow, activeColumn + 1].getImage() == black)
+                    if (grid[r, c].getPaint())
                     {
-                        grid[activeRow, activeColumn + 1].setImage(paint);
+                        grid[r, c].setImage(paint);
                 }
                     else { 
-                        grid[activeRow, activeColumn + 1].setImage(arrow);
+                        grid[r, c].setImage(arrow);
                 }
 
-                    activeColumn++;
+                   activeRow = r;
+                   activeColumn = c;
 
                 }
-                else if (direction == 3 && activeColumn - 1 >= 0 && !blocked[activeRow, activeColumn - 1])
-                {
-                     if (grid[activeRow, activeColumn].getImage() == paint)
-                     {
-                        grid[activeRow, activeColumn].setImage(black);
-                     }
-                     else
-                     {
-                        grid[activeRow, activeColumn].setImage(blank);
-                }
-
-                    if (grid[activeRow, activeColumn - 1].getImage() == black)
-                    {
-                        grid[activeRow, activeColumn - 1].setImage(paint);
-                }
-                    else
-                    {
-                        grid[activeRow, activeColumn - 1].setImage(arrow);
-                }
-
-                    activeColumn--;
-                }
-                else if (direction == 2 && activeRow - 1 >= 0 && !blocked[activeRow - 1, activeColumn])
-                {
-                     if (grid[activeRow, activeColumn].getImage() == paint)
-                     {
-                        grid[activeRow, activeColumn].setImage(black);
-                }
-                     else
-                     {
-                        grid[activeRow, activeColumn].setImage(blank);
-                }
-
-                if (grid[activeRow-1, activeColumn].getImage() == black)
-                {
-                    grid[activeRow-1, activeColumn].setImage(paint);
-                }
-                else
-                {
-                    grid[activeRow-1, activeColumn].setImage(arrow);
-                }
-
-                    activeRow--;
-
-                }
-                else if (direction == 4 && activeRow + 1 <= 6 && !blocked[activeRow + 1, activeColumn])
-                {
-                    if (grid[activeRow, activeColumn].getImage() == paint)
-                    {
-                        grid[activeRow, activeColumn].setImage(black);
-                }
-                    else
-                    {
-                        grid[activeRow, activeColumn].setImage(blank);
-                }
-
-                    if (grid[activeRow + 1, activeColumn].getImage() == black)
-                    {
-                        grid[activeRow + 1, activeColumn].setImage(paint);
-                }
-                    else
-                    {
-                        grid[activeRow + 1, activeColumn].setImage(arrow);
-                }
-
-                activeRow++;
+                
                 }
             
-        }
-
-       
     }
 }

@@ -35,7 +35,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBoxMove = new System.Windows.Forms.PictureBox();
-            this.pictureBoxsquare = new System.Windows.Forms.PictureBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
             this.buttonLeft = new System.Windows.Forms.Button();
@@ -97,8 +96,14 @@
             this.pictureBoxPaint = new System.Windows.Forms.PictureBox();
             this.pictureBoxTurnLeft = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.Functions = new System.Windows.Forms.TabPage();
+            this.LoopsAndConditionals = new System.Windows.Forms.TabPage();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.pictureBoxWhile = new System.Windows.Forms.PictureBox();
+            this.pictureBox56 = new System.Windows.Forms.PictureBox();
+            this.Conditions = new System.Windows.Forms.TabPage();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMove)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxsquare)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox49)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox48)).BeginInit();
@@ -153,6 +158,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxErase)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPaint)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTurnLeft)).BeginInit();
+            this.tabControl1.SuspendLayout();
+            this.Functions.SuspendLayout();
+            this.LoopsAndConditionals.SuspendLayout();
+            this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxWhile)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox56)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -211,15 +222,6 @@
             this.pictureBoxMove.TabIndex = 12;
             this.pictureBoxMove.TabStop = false;
             this.pictureBoxMove.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBoxMove_MouseDown);
-            // 
-            // pictureBoxsquare
-            // 
-            this.pictureBoxsquare.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxsquare.Image")));
-            this.pictureBoxsquare.Location = new System.Drawing.Point(748, 794);
-            this.pictureBoxsquare.Name = "pictureBoxsquare";
-            this.pictureBoxsquare.Size = new System.Drawing.Size(64, 51);
-            this.pictureBoxsquare.TabIndex = 15;
-            this.pictureBoxsquare.TabStop = false;
             // 
             // buttonLeft
             // 
@@ -873,13 +875,14 @@
             // 
             // panel2
             // 
+            this.panel2.AutoScroll = true;
             this.panel2.Controls.Add(this.pictureBoxErase);
             this.panel2.Controls.Add(this.pictureBoxPaint);
             this.panel2.Controls.Add(this.pictureBoxTurnLeft);
             this.panel2.Controls.Add(this.pictureBoxMove);
-            this.panel2.Location = new System.Drawing.Point(32, 794);
+            this.panel2.Location = new System.Drawing.Point(27, 17);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(675, 100);
+            this.panel2.Size = new System.Drawing.Size(879, 100);
             this.panel2.TabIndex = 67;
             // 
             // pictureBoxErase
@@ -927,6 +930,80 @@
             this.label3.TabIndex = 68;
             this.label3.Text = "label3";
             // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.Functions);
+            this.tabControl1.Controls.Add(this.LoopsAndConditionals);
+            this.tabControl1.Controls.Add(this.Conditions);
+            this.tabControl1.Location = new System.Drawing.Point(21, 765);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(935, 172);
+            this.tabControl1.TabIndex = 69;
+            // 
+            // Functions
+            // 
+            this.Functions.Controls.Add(this.panel2);
+            this.Functions.Location = new System.Drawing.Point(8, 39);
+            this.Functions.Name = "Functions";
+            this.Functions.Padding = new System.Windows.Forms.Padding(3);
+            this.Functions.Size = new System.Drawing.Size(919, 125);
+            this.Functions.TabIndex = 0;
+            this.Functions.Text = "Functions";
+            this.Functions.UseVisualStyleBackColor = true;
+            // 
+            // LoopsAndConditionals
+            // 
+            this.LoopsAndConditionals.Controls.Add(this.panel3);
+            this.LoopsAndConditionals.Location = new System.Drawing.Point(8, 39);
+            this.LoopsAndConditionals.Name = "LoopsAndConditionals";
+            this.LoopsAndConditionals.Padding = new System.Windows.Forms.Padding(3);
+            this.LoopsAndConditionals.Size = new System.Drawing.Size(919, 125);
+            this.LoopsAndConditionals.TabIndex = 1;
+            this.LoopsAndConditionals.Text = "Loops and Conditional";
+            this.LoopsAndConditionals.UseVisualStyleBackColor = true;
+            // 
+            // panel3
+            // 
+            this.panel3.AutoScroll = true;
+            this.panel3.Controls.Add(this.pictureBoxWhile);
+            this.panel3.Controls.Add(this.pictureBox56);
+            this.panel3.Location = new System.Drawing.Point(6, 15);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(827, 100);
+            this.panel3.TabIndex = 68;
+            // 
+            // pictureBoxWhile
+            // 
+            this.pictureBoxWhile.AllowDrop = true;
+            this.pictureBoxWhile.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxWhile.Image")));
+            this.pictureBoxWhile.Location = new System.Drawing.Point(6, 19);
+            this.pictureBoxWhile.Name = "pictureBoxWhile";
+            this.pictureBoxWhile.Size = new System.Drawing.Size(155, 78);
+            this.pictureBoxWhile.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxWhile.TabIndex = 17;
+            this.pictureBoxWhile.TabStop = false;
+            this.pictureBoxWhile.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBoxWhile_MouseDown);
+            // 
+            // pictureBox56
+            // 
+            this.pictureBox56.AllowDrop = true;
+            this.pictureBox56.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox56.Name = "pictureBox56";
+            this.pictureBox56.Size = new System.Drawing.Size(161, 100);
+            this.pictureBox56.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox56.TabIndex = 12;
+            this.pictureBox56.TabStop = false;
+            // 
+            // Conditions
+            // 
+            this.Conditions.Location = new System.Drawing.Point(8, 39);
+            this.Conditions.Name = "Conditions";
+            this.Conditions.Size = new System.Drawing.Size(919, 125);
+            this.Conditions.TabIndex = 2;
+            this.Conditions.Text = "Conditions";
+            this.Conditions.UseVisualStyleBackColor = true;
+            // 
             // main
             // 
             this.AllowDrop = true;
@@ -934,14 +1011,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1510, 933);
+            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.buttonMove);
             this.Controls.Add(this.buttonLeft);
-            this.Controls.Add(this.pictureBoxsquare);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button4);
@@ -952,7 +1028,6 @@
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.main_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMove)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxsquare)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox49)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox48)).EndInit();
@@ -1007,6 +1082,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxErase)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPaint)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTurnLeft)).EndInit();
+            this.tabControl1.ResumeLayout(false);
+            this.Functions.ResumeLayout(false);
+            this.LoopsAndConditionals.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxWhile)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox56)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1019,7 +1100,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBoxMove;
-        private System.Windows.Forms.PictureBox pictureBoxsquare;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.ComponentModel.BackgroundWorker backgroundWorker2;
         private System.Windows.Forms.Button buttonLeft;
@@ -1081,7 +1161,13 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.PictureBox pictureBoxPaint;
         private System.Windows.Forms.PictureBox pictureBoxErase;
-        
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage Functions;
+        private System.Windows.Forms.TabPage LoopsAndConditionals;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.PictureBox pictureBoxWhile;
+        private System.Windows.Forms.PictureBox pictureBox56;
+        private System.Windows.Forms.TabPage Conditions;
     }
 }
 
