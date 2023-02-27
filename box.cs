@@ -41,6 +41,16 @@ namespace Prototype
 
         }
 
+        public void reset()
+        {
+            if (!blocked)
+            {
+                image = blank;
+                p.Image = blank;
+            }
+            painted = false;
+        }
+
         public void setPictureBox(PictureBox x) { p = x; }
         public PictureBox getPictureBox() { return p; }
 
