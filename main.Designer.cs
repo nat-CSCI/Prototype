@@ -37,8 +37,6 @@
             this.pictureBoxMove = new System.Windows.Forms.PictureBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
-            this.buttonLeft = new System.Windows.Forms.Button();
-            this.buttonMove = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBox49 = new System.Windows.Forms.PictureBox();
             this.pictureBox47 = new System.Windows.Forms.PictureBox();
@@ -101,9 +99,10 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.Functions = new System.Windows.Forms.TabPage();
             this.LoopsAndConditionals = new System.Windows.Forms.TabPage();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.pictureBoxWhile = new System.Windows.Forms.PictureBox();
             this.pictureBoxIf = new System.Windows.Forms.PictureBox();
             this.pictureBoxFor = new System.Windows.Forms.PictureBox();
-            this.pictureBoxWhile = new System.Windows.Forms.PictureBox();
             this.Conditions = new System.Windows.Forms.TabPage();
             this.pictureBoxBehindBlocked = new System.Windows.Forms.PictureBox();
             this.pictureBoxRightBlocked = new System.Windows.Forms.PictureBox();
@@ -111,8 +110,8 @@
             this.pictureBoxNotBlocked = new System.Windows.Forms.PictureBox();
             this.pictureBoxNotPainted = new System.Windows.Forms.PictureBox();
             this.pictureBoxPainted = new System.Windows.Forms.PictureBox();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.buttonReset = new System.Windows.Forms.Button();
+            this.buttonStep = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMove)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox49)).BeginInit();
@@ -173,9 +172,10 @@
             this.tabControl1.SuspendLayout();
             this.Functions.SuspendLayout();
             this.LoopsAndConditionals.SuspendLayout();
+            this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxWhile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIf)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFor)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxWhile)).BeginInit();
             this.Conditions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBehindBlocked)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRightBlocked)).BeginInit();
@@ -183,12 +183,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNotBlocked)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNotPainted)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPainted)).BeginInit();
-            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonRun
             // 
-            this.buttonRun.Location = new System.Drawing.Point(1202, 975);
+            this.buttonRun.Location = new System.Drawing.Point(1130, 951);
             this.buttonRun.Name = "buttonRun";
             this.buttonRun.Size = new System.Drawing.Size(126, 43);
             this.buttonRun.TabIndex = 4;
@@ -217,7 +216,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 18);
+            this.label1.Location = new System.Drawing.Point(24, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(70, 25);
             this.label1.TabIndex = 8;
@@ -242,26 +241,6 @@
             this.pictureBoxMove.TabIndex = 12;
             this.pictureBoxMove.TabStop = false;
             this.pictureBoxMove.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox_MouseDown);
-            // 
-            // buttonLeft
-            // 
-            this.buttonLeft.Location = new System.Drawing.Point(913, 942);
-            this.buttonLeft.Name = "buttonLeft";
-            this.buttonLeft.Size = new System.Drawing.Size(122, 41);
-            this.buttonLeft.TabIndex = 59;
-            this.buttonLeft.Text = "Left";
-            this.buttonLeft.UseVisualStyleBackColor = true;
-            this.buttonLeft.Click += new System.EventHandler(this.buttonLeft_Click);
-            // 
-            // buttonMove
-            // 
-            this.buttonMove.Location = new System.Drawing.Point(913, 986);
-            this.buttonMove.Name = "buttonMove";
-            this.buttonMove.Size = new System.Drawing.Size(114, 43);
-            this.buttonMove.TabIndex = 63;
-            this.buttonMove.Text = "Move";
-            this.buttonMove.UseVisualStyleBackColor = true;
-            this.buttonMove.Click += new System.EventHandler(this.buttonMove_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -1116,11 +1095,12 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(569, 17);
+            this.label3.Location = new System.Drawing.Point(1282, 1008);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(70, 25);
             this.label3.TabIndex = 68;
             this.label3.Text = "label3";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tabControl1
             // 
@@ -1157,6 +1137,28 @@
             this.LoopsAndConditionals.Text = "Loops and Conditional";
             this.LoopsAndConditionals.UseVisualStyleBackColor = true;
             // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.pictureBoxWhile);
+            this.panel3.Controls.Add(this.pictureBoxIf);
+            this.panel3.Controls.Add(this.pictureBoxFor);
+            this.panel3.Location = new System.Drawing.Point(4, 4);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(857, 148);
+            this.panel3.TabIndex = 20;
+            // 
+            // pictureBoxWhile
+            // 
+            this.pictureBoxWhile.AllowDrop = true;
+            this.pictureBoxWhile.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxWhile.Image")));
+            this.pictureBoxWhile.Location = new System.Drawing.Point(2, 3);
+            this.pictureBoxWhile.Name = "pictureBoxWhile";
+            this.pictureBoxWhile.Size = new System.Drawing.Size(155, 78);
+            this.pictureBoxWhile.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxWhile.TabIndex = 17;
+            this.pictureBoxWhile.TabStop = false;
+            this.pictureBoxWhile.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox_MouseDown);
+            // 
             // pictureBoxIf
             // 
             this.pictureBoxIf.AllowDrop = true;
@@ -1180,18 +1182,6 @@
             this.pictureBoxFor.TabIndex = 18;
             this.pictureBoxFor.TabStop = false;
             this.pictureBoxFor.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox_MouseDown);
-            // 
-            // pictureBoxWhile
-            // 
-            this.pictureBoxWhile.AllowDrop = true;
-            this.pictureBoxWhile.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxWhile.Image")));
-            this.pictureBoxWhile.Location = new System.Drawing.Point(2, 3);
-            this.pictureBoxWhile.Name = "pictureBoxWhile";
-            this.pictureBoxWhile.Size = new System.Drawing.Size(155, 78);
-            this.pictureBoxWhile.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxWhile.TabIndex = 17;
-            this.pictureBoxWhile.TabStop = false;
-            this.pictureBoxWhile.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox_MouseDown);
             // 
             // Conditions
             // 
@@ -1280,25 +1270,25 @@
             this.pictureBoxPainted.TabStop = false;
             this.pictureBoxPainted.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox_MouseDown);
             // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.pictureBoxWhile);
-            this.panel3.Controls.Add(this.pictureBoxIf);
-            this.panel3.Controls.Add(this.pictureBoxFor);
-            this.panel3.Location = new System.Drawing.Point(4, 4);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(857, 148);
-            this.panel3.TabIndex = 20;
-            // 
             // buttonReset
             // 
-            this.buttonReset.Location = new System.Drawing.Point(1412, 975);
+            this.buttonReset.Location = new System.Drawing.Point(1446, 951);
             this.buttonReset.Name = "buttonReset";
             this.buttonReset.Size = new System.Drawing.Size(126, 43);
             this.buttonReset.TabIndex = 70;
             this.buttonReset.Text = "Reset";
             this.buttonReset.UseVisualStyleBackColor = true;
             this.buttonReset.Click += new System.EventHandler(this.buttonReset_Click);
+            // 
+            // buttonStep
+            // 
+            this.buttonStep.Location = new System.Drawing.Point(1287, 951);
+            this.buttonStep.Name = "buttonStep";
+            this.buttonStep.Size = new System.Drawing.Size(126, 43);
+            this.buttonStep.TabIndex = 71;
+            this.buttonStep.Text = "Step";
+            this.buttonStep.UseVisualStyleBackColor = true;
+            this.buttonStep.Click += new System.EventHandler(this.buttonStep_Click);
             // 
             // main
             // 
@@ -1308,14 +1298,13 @@
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(1796, 1064);
+            this.Controls.Add(this.buttonStep);
             this.Controls.Add(this.buttonReset);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Controls.Add(this.buttonMove);
-            this.Controls.Add(this.buttonLeft);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button4);
@@ -1386,9 +1375,10 @@
             this.tabControl1.ResumeLayout(false);
             this.Functions.ResumeLayout(false);
             this.LoopsAndConditionals.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxWhile)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIf)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFor)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxWhile)).EndInit();
             this.Conditions.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBehindBlocked)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRightBlocked)).EndInit();
@@ -1396,7 +1386,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNotBlocked)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNotPainted)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPainted)).EndInit();
-            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1411,8 +1400,6 @@
         private System.Windows.Forms.PictureBox pictureBoxMove;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.ComponentModel.BackgroundWorker backgroundWorker2;
-        private System.Windows.Forms.Button buttonLeft;
-        private System.Windows.Forms.Button buttonMove;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.PictureBox pictureBox49;
         private System.Windows.Forms.PictureBox pictureBox48;
@@ -1487,6 +1474,7 @@
         private System.Windows.Forms.PictureBox pictureBoxPainted;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button buttonReset;
+        private System.Windows.Forms.Button buttonStep;
     }
 }
 
