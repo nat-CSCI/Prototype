@@ -112,6 +112,7 @@
             this.pictureBoxPainted = new System.Windows.Forms.PictureBox();
             this.buttonReset = new System.Windows.Forms.Button();
             this.buttonStep = new System.Windows.Forms.Button();
+            this.buttonLesson = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMove)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox49)).BeginInit();
@@ -197,7 +198,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(1362, 9);
+            this.button3.Location = new System.Drawing.Point(1656, 9);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(126, 43);
             this.button3.TabIndex = 6;
@@ -206,7 +207,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(1230, 9);
+            this.button4.Location = new System.Drawing.Point(1524, 6);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(126, 43);
             this.button4.TabIndex = 7;
@@ -1097,9 +1098,8 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(1282, 1008);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(70, 25);
+            this.label3.Size = new System.Drawing.Size(0, 25);
             this.label3.TabIndex = 68;
-            this.label3.Text = "label3";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tabControl1
@@ -1290,6 +1290,16 @@
             this.buttonStep.UseVisualStyleBackColor = true;
             this.buttonStep.Click += new System.EventHandler(this.buttonStep_Click);
             // 
+            // buttonLesson
+            // 
+            this.buttonLesson.Location = new System.Drawing.Point(848, 6);
+            this.buttonLesson.Name = "buttonLesson";
+            this.buttonLesson.Size = new System.Drawing.Size(126, 43);
+            this.buttonLesson.TabIndex = 72;
+            this.buttonLesson.Text = "Lesson";
+            this.buttonLesson.UseVisualStyleBackColor = true;
+            this.buttonLesson.Click += new System.EventHandler(this.buttonLesson_Click);
+            // 
             // main
             // 
             this.AllowDrop = true;
@@ -1298,6 +1308,7 @@
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(1796, 1064);
+            this.Controls.Add(this.buttonLesson);
             this.Controls.Add(this.buttonStep);
             this.Controls.Add(this.buttonReset);
             this.Controls.Add(this.tabControl1);
@@ -1475,6 +1486,7 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button buttonReset;
         private System.Windows.Forms.Button buttonStep;
+        private System.Windows.Forms.Button buttonLesson;
     }
 }
 

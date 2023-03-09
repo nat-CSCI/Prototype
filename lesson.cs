@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Prototype
 {
-    public partial class lesson : Form
+    public partial class Lesson : Form
     {
-        public lesson()
+        public Lesson()
         {
             InitializeComponent();
         }

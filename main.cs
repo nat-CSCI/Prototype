@@ -35,6 +35,11 @@ namespace Prototype
         bool greaterthan = false;              //Show whether for loop is greater than or less than
         int startValue = 0;                    //Starting value for a for loop
         bool up = true;
+        int loopVariable = 0;
+        bool runElse = false;
+        bool progDone = false;
+        int counter = 0;
+
         box[,] grid = new box[7, 7];
 
         Image arrow = Image.FromFile("C:\\Users\\natdy\\OneDrive\\Desktop\\Prototype\\arrow.png");
@@ -259,7 +264,7 @@ namespace Prototype
                             up = true;
                         }
 
-                    }
+                    }  
                     else if (getActions) //While loop
                     {
                         label1.Text = "Getting Actions for Loop or Conditional";
@@ -284,7 +289,7 @@ namespace Prototype
                             {
                                 for (int i = 0; i < numActions; i++)
                                 {
-                                    label3.Text = "Running: " + progItem;
+                                    label3.Text = "Running: " + loopActions[i];
                                     checkAction(loopActions[i]);
                                     await Task.Delay(700);
 
@@ -299,6 +304,7 @@ namespace Prototype
                             {
                                 for (int i = 0; i < numActions; i++)
                                 {
+                                    label3.Text = "Running: " + loopActions[i];
                                     checkAction(loopActions[i]);
                                     await Task.Delay(700);
 
@@ -313,6 +319,7 @@ namespace Prototype
                             {
                                 for (int i = 0; i < numActions; i++)
                                 {
+                                    label3.Text = "Running: " + loopActions[i];
                                     checkAction(loopActions[i]);
                                     await Task.Delay(700);
 
@@ -329,6 +336,7 @@ namespace Prototype
                                 {
                                     for (int i = 0; i < numActions; i++)
                                     {
+                                        label3.Text = "Running: " + loopActions[i];
                                         checkAction(loopActions[i]);
                                         await Task.Delay(700);
 
@@ -342,6 +350,7 @@ namespace Prototype
                                 {
                                     for (int i = 0; i < numActions; i++)
                                     {
+                                        label3.Text = "Running: " + loopActions[i];
                                         checkAction(loopActions[i]);
                                         await Task.Delay(700);
 
@@ -355,6 +364,7 @@ namespace Prototype
                                 {
                                     for (int i = 0; i < numActions; i++)
                                     {
+                                        label3.Text = "Running: " + loopActions[i];
                                         checkAction(loopActions[i]);
                                         await Task.Delay(700);
 
@@ -368,6 +378,7 @@ namespace Prototype
                                 {
                                     for (int i = 0; i < numActions; i++)
                                     {
+                                        label3.Text = "Running: " + loopActions[i];
                                         checkAction(loopActions[i]);
                                         await Task.Delay(700);
 
@@ -375,9 +386,15 @@ namespace Prototype
 
                                 }
                             }
-
+                            whileLoop = false;
+                            label3.Text = "Running: " + progItem;
+                            checkAction(progItem);
+                            await Task.Delay(700);
 
                         }
+
+                        numActions = 0;
+                        Array.Clear(loopActions, 0, loopActions.Length);
                     }
                     else if (ifTrue)
                     {
@@ -387,12 +404,15 @@ namespace Prototype
                             {
                                 for (int i = 0; i < numActions; i++)
                                 {
-                                    label3.Text = "Running: " + progItem;
+                                    label3.Text = "Running: " + loopActions[i];
                                     checkAction(loopActions[i]);
                                     await Task.Delay(700);
 
                                 }
 
+                            }
+                            else {
+                                runElse = true;
                             }
 
                         }
@@ -402,12 +422,16 @@ namespace Prototype
                             {
                                 for (int i = 0; i < numActions; i++)
                                 {
-                                    label3.Text = "Running: " + progItem;
+                                    label3.Text = "Running: " + loopActions[i];
                                     checkAction(loopActions[i]);
                                     await Task.Delay(700);
 
                                 }
 
+                            }
+                            else
+                            {
+                                runElse = true;
                             }
 
                         }
@@ -417,12 +441,16 @@ namespace Prototype
                             {
                                 for (int i = 0; i < numActions; i++)
                                 {
-                                    label3.Text = "Running: " + progItem;
+                                    label3.Text = "Running: " + loopActions[i];
                                     checkAction(loopActions[i]);
                                     await Task.Delay(700);
 
                                 }
 
+                            }
+                            else
+                            {
+                                runElse = true;
                             }
 
                         }
@@ -434,12 +462,16 @@ namespace Prototype
                                 {
                                     for (int i = 0; i < numActions; i++)
                                     {
-                                        label3.Text = "Running: " + progItem;
+                                        label3.Text = "Running: " + loopActions[i];
                                         checkAction(loopActions[i]);
                                         await Task.Delay(700);
 
                                     }
 
+                                }
+                                else
+                                {
+                                    runElse = true;
                                 }
                             }
                             else if (direction == 2)
@@ -448,11 +480,16 @@ namespace Prototype
                                 {
                                     for (int i = 0; i < numActions; i++)
                                     {
+                                        label3.Text = "Running: " + loopActions[i];
                                         checkAction(loopActions[i]);
                                         await Task.Delay(700);
 
                                     }
 
+                                }
+                                else
+                                {
+                                    runElse = true;
                                 }
                             }
                             else if (direction == 3)
@@ -461,11 +498,16 @@ namespace Prototype
                                 {
                                     for (int i = 0; i < numActions; i++)
                                     {
+                                        label3.Text = "Running: " + loopActions[i];
                                         checkAction(loopActions[i]);
                                         await Task.Delay(700);
 
                                     }
 
+                                }
+                                else
+                                {
+                                    runElse = true;
                                 }
                             }
                             else
@@ -474,11 +516,16 @@ namespace Prototype
                                 {
                                     for (int i = 0; i < numActions; i++)
                                     {
+                                        label3.Text = "Running: " + loopActions[i];
                                         checkAction(loopActions[i]);
                                         await Task.Delay(700);
 
                                     }
 
+                                }
+                                else
+                                {
+                                    runElse = true;
                                 }
                             }
                         }
@@ -490,11 +537,16 @@ namespace Prototype
                                 {
                                     for (int i = 0; i < numActions; i++)
                                     {
+                                        label3.Text = "Running: " + loopActions[i];
                                         checkAction(loopActions[i]);
                                         await Task.Delay(700);
 
                                     }
 
+                                }
+                                else
+                                {
+                                    runElse = true;
                                 }
                             }
                             else if (direction == 2)
@@ -503,11 +555,16 @@ namespace Prototype
                                 {
                                     for (int i = 0; i < numActions; i++)
                                     {
+                                        label3.Text = "Running: " + loopActions[i];
                                         checkAction(loopActions[i]);
                                         await Task.Delay(700);
 
                                     }
 
+                                }
+                                else
+                                {
+                                    runElse = true;
                                 }
                             }
                             else if (direction == 3)
@@ -516,11 +573,16 @@ namespace Prototype
                                 {
                                     for (int i = 0; i < numActions; i++)
                                     {
+                                        label3.Text = "Running: " + loopActions[i];
                                         checkAction(loopActions[i]);
                                         await Task.Delay(700);
 
                                     }
 
+                                }
+                                else
+                                {
+                                    runElse = true;
                                 }
                             }
                             else
@@ -529,11 +591,16 @@ namespace Prototype
                                 {
                                     for (int i = 0; i < numActions; i++)
                                     {
+                                        label3.Text = "Running: " + loopActions[i];
                                         checkAction(loopActions[i]);
                                         await Task.Delay(700);
 
                                     }
 
+                                }
+                                else
+                                {
+                                    runElse = true;
                                 }
                             }
                         }
@@ -545,11 +612,16 @@ namespace Prototype
                                 {
                                     for (int i = 0; i < numActions; i++)
                                     {
+                                        label3.Text = "Running: " + loopActions[i];
                                         checkAction(loopActions[i]);
                                         await Task.Delay(700);
 
                                     }
 
+                                }
+                                else
+                                {
+                                    runElse = true;
                                 }
                             }
                             else if (direction == 2)
@@ -558,11 +630,16 @@ namespace Prototype
                                 {
                                     for (int i = 0; i < numActions; i++)
                                     {
+                                        label3.Text = "Running: " + loopActions[i];
                                         checkAction(loopActions[i]);
                                         await Task.Delay(700);
 
                                     }
 
+                                }
+                                else
+                                {
+                                    runElse = true;
                                 }
                             }
                             else if (direction == 3)
@@ -571,11 +648,16 @@ namespace Prototype
                                 {
                                     for (int i = 0; i < numActions; i++)
                                     {
+                                        label3.Text = "Running: " + loopActions[i];
                                         checkAction(loopActions[i]);
                                         await Task.Delay(700);
 
                                     }
 
+                                }
+                                else
+                                {
+                                    runElse = true;
                                 }
                             }
                             else
@@ -584,13 +666,25 @@ namespace Prototype
                                 {
                                     for (int i = 0; i < numActions; i++)
                                     {
+                                        label3.Text = "Running: " + loopActions[i];
                                         checkAction(loopActions[i]);
                                         await Task.Delay(700);
 
                                     }
 
                                 }
+                                else
+                                {
+                                    runElse = true;
+                                }
                             }
+                        }
+                        numActions = 0;
+                        Array.Clear(loopActions, 0, loopActions.Length);
+                        ifTrue = false;
+                        if (progItem.Contains("else"))
+                        {
+                            getActions = true;
                         }
                     }
                     else if (forLoop)
@@ -604,12 +698,16 @@ namespace Prototype
                                 {
                                     for (int j = 0; j < numActions; j++)
                                     {
-                                        label3.Text = "Running: " + progItem;
+                                        label3.Text = "Running: " + loopActions[j];
                                         checkAction(loopActions[j]);
                                         await Task.Delay(700);
                                     }
 
                                 }
+                                forLoop = false;
+                                label3.Text = "Running: " + progItem;
+                                checkAction(progItem);
+                                await Task.Delay(700);
                             }
                             else
                             {
@@ -617,12 +715,16 @@ namespace Prototype
                                 {
                                     for (int j = 0; j < numActions; j++)
                                     {
-                                        label3.Text = "Running: " + progItem;
+                                        label3.Text = "Running: " + loopActions[j];
                                         checkAction(loopActions[j]);
                                         await Task.Delay(700);
                                     }
 
                                 }
+                                forLoop = false;
+                                label3.Text = "Running: " + progItem;
+                                checkAction(progItem);
+                                await Task.Delay(700);
                             }
                         }
                         else
@@ -633,12 +735,16 @@ namespace Prototype
                                 {
                                     for (int j = 0; j < numActions; j++)
                                     {
-                                        label3.Text = "Running: " + progItem;
+                                        label3.Text = "Running: " + loopActions[j];
                                         checkAction(loopActions[j]);
                                         await Task.Delay(700);
                                     }
 
                                 }
+                                forLoop = false;
+                                label3.Text = "Running: " + progItem;
+                                checkAction(progItem);
+                                await Task.Delay(700);
                             }
                             else
                             {
@@ -646,14 +752,34 @@ namespace Prototype
                                 {
                                     for (int j = 0; j < numActions; j++)
                                     {
-                                        label3.Text = "Running: " + progItem;
+                                        label3.Text = "Running: " + loopActions[j];
                                         checkAction(loopActions[j]);
                                         await Task.Delay(700);
                                     }
 
                                 }
+                                forLoop = false;
+                                label3.Text = "Running: " + progItem;
+                                checkAction(progItem);
+                                await Task.Delay(700);
                             }
                         }
+                        numActions = 0;
+                        Array.Clear(loopActions, 0, loopActions.Length);
+                    }
+                    else if (runElse)
+                    {
+                        for (int i = 0; i < numActions; i++)
+                        {
+                            label3.Text = "Running: " + loopActions[i];
+                            checkAction(loopActions[i]);
+                            await Task.Delay(700);
+
+                        }
+                        runElse = false;
+                        label3.Text = "Running: " + progItem;
+                        checkAction(progItem);
+                        await Task.Delay(700);
                     }
                     else
                     {
@@ -666,9 +792,15 @@ namespace Prototype
                 {
                     label3.Text = "Stopped due to invalid move";
                 }
+
+
             }
-            
-            
+
+            tableLayoutPanel1.BackColor = Color.YellowGreen;
+            buttonRun.Enabled = true;
+            buttonReset.Enabled = true;
+            textBox1.Enabled = true;
+            label3.Text = "Done Running";
 
 
 
@@ -761,8 +893,10 @@ namespace Prototype
                 turn();
             }
 
+
+
         }
-       
+
         //Movement functions
 
         public void checkAction(string action)
@@ -854,622 +988,589 @@ namespace Prototype
             }
          }
 
+        public async void ifHelper (string progItem)
+        {
+            if (loopPlace < numActions)
+            {
+                label3.Text = "Running: " + progItem;
+                checkAction(progItem);
+                await Task.Delay(700);
+                loopPlace++;
+                if (loopPlace >= numActions)
+                {
+                    ifTrue = false;
+                    progPlace++;
+                    Array.Clear(loopActions, 0, loopActions.Length);
+                    loopPlace = 0;
+                }
+            }
+        }
+
         private async void buttonStep_Click(object sender, EventArgs e)
         {
+            counter++;
+            tableLayoutPanel1.BackColor = Color.Green;
+            buttonRun.Enabled = false;
+            buttonReset.Enabled = false;
+            textBox1.Enabled = false;
+            buttonStep.Enabled = false;
             prog = textBox1.Text.ToString().ToLower().Split('\n');
             string progItem;
-            if (progPlace < prog.Length)
+
+            if (progDone)
             {
-                if ((whileLoop || forLoop || ifTrue) && !getActions)
-                {
-                    if (loopPlace >= numActions)
-                    {
-                        loopPlace = 0;
-                    }
-                    progItem = loopActions[loopPlace]; }
-                else
-                { progItem = prog[progPlace]; }
-
-                if (!error) //Error occurs if a move is not possible
-                {
-
-                    if (progItem.Contains("while")) //While loop
-                    {
-                        label3.Text = "Running: " + progItem;
-                        whileLoop = true;
-                        getActions = true;
-                        x = progItem.Split('(');
-
-                        condition = x[1];
-                        progPlace++;
-
-                    }
-                    else if (progItem.Contains("if")) //if statement
-                    {
-                        label3.Text = "Running: " + progItem;
-                        ifTrue = true;
-                        x = progItem.Split('(');
-                        condition = x[1];
-                        getActions = true;
-                        progPlace++;
-                    }
-                    else if (progItem.Contains("for")) //for loop
-                    {
-                        label3.Text = "Running: " + progItem;
-                        forLoop = true;
-                        getActions = true;
-                        x = progItem.Split(';');
-                        condition = x[1];
-                        string y = x[0];
-                        startValue = int.Parse(x[0].Split('=')[1]);
-                        if (progItem.Contains('>'))
-                        {
-                            greaterthan = true;
-                        }
-                        else
-                        {
-                            greaterthan = false;
-                        }
-
-                        if (!progItem.Contains('+'))
-                        {
-                            up = false;
-                        }
-                        else
-                        {
-                            up = true;
-                        }
-                        progPlace++;
-                    }
-                    else if (getActions) //While loop
-                    {
-                        label3.Text = "Getting Actions for Loop or Conditional";
-                        string action = prog[progPlace];
-                        int p = progPlace;
-                        while(action != "}\r") {
-                            if (action != "\r")
-                            {
-                                loopActions[place] = action;
-                                place++;
-                                numActions++;
-                            }
-                            p++;
-                            action = prog[p];
-                        }
-                        
-                            getActions = false;
-                            place = 0;
-                        
-                    }
-                    else if (whileLoop) //While loop
-                    {
-                        if (condition.Contains("notblocked"))
-                        {
-                            if (moveIsValid())
-                            {
-                                if (loopPlace < numActions)
-                                {
-                                    label3.Text = "Running: " + progItem;
-                                    checkAction(progItem);
-                                    await Task.Delay(700);
-                                    loopPlace++;
-                                }
-                                else
-                                {
-                                    loopPlace = 0;
-                                }
-
-                            }
-                            else { progPlace++; }
-
-                        }
-                        else if (condition.Contains("ispainted"))
-                        {
-                            if (grid[activeRow, activeColumn].getPaint())
-                            {
-                                if (loopPlace < numActions)
-                                {
-                                    label3.Text = "Running: " + progItem;
-                                    checkAction(progItem);
-                                    await Task.Delay(700);
-                                    loopPlace++;
-                                }
-                                else
-                                {
-                                    loopPlace = 0;
-                                }
-
-                            }
-                            else { progPlace++; }
-
-                        }
-                        else if (condition.Contains("notpainted"))
-                        {
-                            if (!grid[activeRow, activeColumn].getPaint())
-                            {
-                                if (loopPlace < numActions)
-                                {
-                                    label3.Text = "Running: " + progItem;
-                                    checkAction(progItem);
-                                    await Task.Delay(700);
-                                    loopPlace++;
-                                }
-                                else
-                                {
-                                    loopPlace = 0;
-                                }
-
-                            }
-                            else { progPlace++; }
-
-                        }
-                        else if (condition.Contains("leftblocked"))
-                        {
-                            if (direction == 1)
-                            {
-                                if (grid[activeRow - 1, activeColumn].getBlocked())
-                                {
-                                    if (loopPlace < numActions)
-                                    {
-                                        label3.Text = "Running: " + progItem;
-                                        checkAction(progItem);
-                                        await Task.Delay(700);
-                                        loopPlace++;
-                                    }
-                                    else
-                                    {
-                                        loopPlace = 0;
-                                    }
-
-                                }
-                                else { progPlace++; }
-                            }
-                            else if (direction == 2)
-                            {
-                                if (grid[activeRow, activeColumn - 1].getBlocked())
-                                {
-                                    if (loopPlace < numActions)
-                                    {
-                                        label3.Text = "Running: " + progItem;
-                                        checkAction(progItem);
-                                        await Task.Delay(700);
-                                        loopPlace++;
-                                    }
-                                    else
-                                    {
-                                        loopPlace = 0;
-                                    }
-
-                                }
-                                else { progPlace++; }
-                            }
-                            else if (direction == 3)
-                            {
-                                if (grid[activeRow + 1, activeColumn].getBlocked())
-                                {
-                                    if (loopPlace < numActions)
-                                    {
-                                        label3.Text = "Running: " + progItem;
-                                        checkAction(progItem);
-                                        await Task.Delay(700);
-                                        loopPlace++;
-                                    }
-                                    else
-                                    {
-                                        loopPlace = 0;
-                                    }
-
-                                }
-                                else { progPlace++; }
-                            }
-                            else
-                            {
-                                if (grid[activeRow, activeColumn + 1].getBlocked())
-                                {
-                                    if (loopPlace < numActions)
-                                    {
-                                        label3.Text = "Running: " + progItem;
-                                        checkAction(progItem);
-                                        await Task.Delay(700);
-                                        loopPlace++;
-                                    }
-                                    else
-                                    {
-                                        loopPlace = 0;
-                                    }
-
-                                }
-                                else { progPlace++; }
-                            }
-
-
-                        }
-                    }
-                    else if (ifTrue)
-                    {
-                        if (condition.Contains("notblocked"))
-                        {
-                            if (moveIsValid())
-                            {
-                                if (loopPlace < numActions)
-                                {
-                                    label3.Text = "Running: " + progItem;
-                                    checkAction(progItem);
-                                    await Task.Delay(700);
-                                    loopPlace++;
-                                }
-                                else
-                                {
-                                    loopPlace = 0;
-                                }
-
-                            }
-                            else { progPlace++; }
-
-                        }
-                        else if (condition.Contains("ispainted"))
-                        {
-                            if (grid[activeRow, activeColumn].getPaint())
-                            {
-                                if (loopPlace < numActions)
-                                {
-                                    label3.Text = "Running: " + progItem;
-                                    checkAction(progItem);
-                                    await Task.Delay(700);
-                                    loopPlace++;
-                                }
-                                else
-                                {
-                                    loopPlace = 0;
-                                }
-
-                            }
-                            else { progPlace++; }
-
-                        }
-                        else if (condition.Contains("notpainted"))
-                        {
-                            if (!grid[activeRow, activeColumn].getPaint())
-                            {
-                                if (loopPlace < numActions)
-                                {
-                                    label3.Text = "Running: " + progItem;
-                                    checkAction(progItem);
-                                    await Task.Delay(700);
-                                    loopPlace++;
-                                }
-                                else
-                                {
-                                    loopPlace = 0;
-                                }
-
-                            }
-                            else { progPlace++; }
-
-                        }
-                        else if (condition.Contains("leftblocked"))
-                        {
-                            if (direction == 1)
-                            {
-                                if (grid[activeRow - 1, activeColumn].getBlocked())
-                                {
-                                    if (loopPlace < numActions)
-                                    {
-                                        label3.Text = "Running: " + progItem;
-                                        checkAction(progItem);
-                                        await Task.Delay(700);
-                                        loopPlace++;
-                                    }
-                                    else
-                                    {
-                                        loopPlace = 0;
-                                    }
-
-                                }
-                                else { progPlace++; }
-                            }
-                            else if (direction == 2)
-                            {
-                                if (grid[activeRow, activeColumn - 1].getBlocked())
-                                {
-                                    if (loopPlace < numActions)
-                                    {
-                                        label3.Text = "Running: " + progItem;
-                                        checkAction(progItem);
-                                        await Task.Delay(700);
-                                        loopPlace++;
-                                    }
-                                    else
-                                    {
-                                        loopPlace = 0;
-                                    }
-
-                                }
-                                else { progPlace++; }
-                            }
-                            else if (direction == 3)
-                            {
-                                if (grid[activeRow + 1, activeColumn].getBlocked())
-                                {
-                                    if (loopPlace < numActions)
-                                    {
-                                        label3.Text = "Running: " + progItem;
-                                        checkAction(progItem);
-                                        await Task.Delay(700);
-                                        loopPlace++;
-                                    }
-                                    else
-                                    {
-                                        loopPlace = 0;
-                                    }
-
-                                }
-                                else { progPlace++; }
-                            }
-                            else
-                            {
-                                if (grid[activeRow, activeColumn + 1].getBlocked())
-                                {
-                                    if (loopPlace < numActions)
-                                    {
-                                        label3.Text = "Running: " + progItem;
-                                        checkAction(progItem);
-                                        await Task.Delay(700);
-                                        loopPlace++;
-                                    }
-                                    else
-                                    {
-                                        loopPlace = 0;
-                                    }
-
-                                }
-                                else { progPlace++; }
-                            }
-                        }
-                        else if (condition.Contains("rightblocked"))
-                        {
-                            if (direction == 1)
-                            {
-                                if (grid[activeRow + 1, activeColumn].getBlocked())
-                                {
-                                    if (loopPlace < numActions)
-                                    {
-                                        label3.Text = "Running: " + progItem;
-                                        checkAction(progItem);
-                                        await Task.Delay(700);
-                                        loopPlace++;
-                                    }
-                                    else
-                                    {
-                                        loopPlace = 0;
-                                    }
-
-                                }
-                                else { progPlace++; }
-                            }
-                            else if (direction == 2)
-                            {
-                                if (grid[activeRow, activeColumn + 1].getBlocked())
-                                {
-                                    if (loopPlace < numActions)
-                                    {
-                                        label3.Text = "Running: " + progItem;
-                                        checkAction(progItem);
-                                        await Task.Delay(700);
-                                        loopPlace++;
-                                    }
-                                    else
-                                    {
-                                        loopPlace = 0;
-                                    }
-
-                                }
-                                else { progPlace++; }
-                            }
-                            else if (direction == 3)
-                            {
-                                if (grid[activeRow - 1, activeColumn].getBlocked())
-                                {
-                                    if (loopPlace < numActions)
-                                    {
-                                        label3.Text = "Running: " + progItem;
-                                        checkAction(progItem);
-                                        await Task.Delay(700);
-                                        loopPlace++;
-                                    }
-                                    else
-                                    {
-                                        loopPlace = 0;
-                                    }
-
-                                }
-                                else { progPlace++; }
-                            }
-                            else
-                            {
-                                if (grid[activeRow, activeColumn - 1].getBlocked())
-                                {
-                                    if (loopPlace < numActions)
-                                    {
-                                        label3.Text = "Running: " + progItem;
-                                        checkAction(progItem);
-                                        await Task.Delay(700);
-                                        loopPlace++;
-                                    }
-                                    else
-                                    {
-                                        loopPlace = 0;
-                                    }
-
-                                }
-                                else { progPlace++; }
-                            }
-                        }
-                        else if (condition.Contains("behindblocked"))
-                        {
-                            if (direction == 1)
-                            {
-                                if (grid[activeRow, activeColumn - 1].getBlocked())
-                                {
-                                    if (loopPlace < numActions)
-                                    {
-                                        label3.Text = "Running: " + progItem;
-                                        checkAction(progItem);
-                                        await Task.Delay(700);
-                                        loopPlace++;
-                                    }
-                                    else
-                                    {
-                                        loopPlace = 0;
-                                    }
-
-                                }
-                                else { progPlace++; }
-                            }
-                            else if (direction == 2)
-                            {
-                                if (grid[activeRow + 1, activeColumn].getBlocked())
-                                {
-                                    if (loopPlace < numActions)
-                                    {
-                                        label3.Text = "Running: " + progItem;
-                                        checkAction(progItem);
-                                        await Task.Delay(700);
-                                        loopPlace++;
-                                    }
-                                    else
-                                    {
-                                        loopPlace = 0;
-                                    }
-
-                                }
-                                else { progPlace++; }
-                            }
-                            else if (direction == 3)
-                            {
-                                if (grid[activeRow, activeColumn + 1].getBlocked())
-                                {
-                                    if (loopPlace < numActions)
-                                    {
-                                        label3.Text = "Running: " + progItem;
-                                        checkAction(progItem);
-                                        await Task.Delay(700);
-                                        loopPlace++;
-                                    }
-                                    else
-                                    {
-                                        loopPlace = 0;
-                                    }
-
-                                }
-                                else { progPlace++; }
-                            }
-                            else
-                            {
-                                if (grid[activeRow - 1, activeColumn].getBlocked())
-                                {
-                                    if (loopPlace < numActions)
-                                    {
-                                        label3.Text = "Running: " + progItem;
-                                        checkAction(progItem);
-                                        await Task.Delay(700);
-                                        loopPlace++;
-                                    }
-                                    else
-                                    {
-                                        loopPlace = 0;
-                                    }
-
-                                }
-                                else { progPlace++; }
-                            }
-                        }
-                    }
-                    else if (forLoop)
-                    {
-
-                        if (!greaterthan)
-                        {
-                            if (up)
-                            {
-                                for (int i = startValue; i < int.Parse(condition.Split('<')[1]); i++)
-                                {
-                                    for (int j = 0; j < numActions; j++)
-                                    {
-                                        label3.Text = "Running: " + progItem;
-                                        checkAction(loopActions[j]);
-                                        await Task.Delay(700);
-                                    }
-
-                                }
-                            }
-                            else
-                            {
-                                for (int i = startValue; i < int.Parse(condition.Split('<')[1]); i--)
-                                {
-                                    for (int j = 0; j < numActions; j++)
-                                    {
-                                        label3.Text = "Running: " + progItem;
-                                        checkAction(loopActions[j]);
-                                        await Task.Delay(700);
-                                    }
-
-                                }
-                            }
-                        }
-                        else
-                        {
-                            if (up)
-                            {
-                                for (int i = startValue; i > int.Parse(condition.Split('<')[1]); i++)
-                                {
-                                    for (int j = 0; j < numActions; j++)
-                                    {
-                                        label3.Text = "Running: " + progItem;
-                                        checkAction(loopActions[j]);
-                                        await Task.Delay(700);
-                                    }
-
-                                }
-                            }
-                            else
-                            {
-                                for (int i = startValue; i > int.Parse(condition.Split('<')[1]); i--)
-                                {
-                                    for (int j = 0; j < numActions; j++)
-                                    {
-                                        label3.Text = "Running: " + progItem;
-                                        checkAction(loopActions[j]);
-                                        await Task.Delay(700);
-                                    }
-
-                                }
-                            }
-                        }
-                    }
-                    else
-                    {
-                        label3.Text = "Running: " + progItem;
-                        checkAction(progItem);
-                        await Task.Delay(700);
-                        progPlace++;
-                    }
-                    
-                }
-                else
-                {
-                    label3.Text = "Stopped due to invalid move";
-                }
+                resetGrid();
+                progDone = false;
             }
             else
             {
-                tableLayoutPanel1.BackColor = Color.YellowGreen;
-                buttonRun.Enabled = true;
-                buttonReset.Enabled = true;
-                textBox1.Enabled = true;
-                label3.Text = "Done Running";
-                //end of stepping
+                if (progPlace < prog.Length)
+                {
+                    if ((whileLoop || forLoop || ifTrue) && !getActions)
+                    {
+                        if (loopPlace >= numActions)
+                        {
+                            loopPlace = 0;
+                        }
+                        progItem = loopActions[loopPlace];
+                    }
+                    else
+                    { progItem = prog[progPlace]; }
+
+                    if (!error) //Error occurs if a move is not possible
+                    {
+
+                        if (progItem.Contains("while")) //While loop
+                        {
+                            label3.Text = "Running: " + progItem;
+                            whileLoop = true;
+                            getActions = true;
+                            x = progItem.Split('(');
+
+                            condition = x[1];
+                            progPlace++;
+
+                        }
+                        else if (progItem.Contains("if")) //if statement
+                        {
+                            label3.Text = "Running: " + progItem;
+                            ifTrue = true;
+                            x = progItem.Split('(');
+                            condition = x[1];
+                            getActions = true;
+                            progPlace++;
+                        }
+                        else if (progItem.Contains("for")) //for loop
+                        {
+                            label3.Text = "Running: " + progItem;
+                            forLoop = true;
+                            getActions = true;
+                            x = progItem.Split(';');
+                            condition = x[1];
+                            string y = x[0];
+                            startValue = int.Parse(x[0].Split('=')[1]);
+                            if (progItem.Contains('>'))
+                            {
+                                greaterthan = true;
+                            }
+                            else
+                            {
+                                greaterthan = false;
+                            }
+
+                            if (!progItem.Contains('+'))
+                            {
+                                up = false;
+                            }
+                            else
+                            {
+                                up = true;
+                            }
+                            progPlace++;
+                        }
+                        else if (getActions) //While loop
+                        {
+
+                            label3.Text = "Getting Actions for Loop or Conditional";
+                            string action = prog[progPlace];
+                            int p = progPlace;
+                            while (action != "}\r")
+                            {
+                                if (action != "\r")
+                                {
+                                    loopActions[place] = action;
+                                    place++;
+                                    numActions++;
+                                }
+                                p++;
+                                action = prog[p];
+                            }
+
+                            getActions = false;
+                            place = 0;
+
+                        }
+                        else if (whileLoop) //While loop
+                        {
+
+                            if (condition.Contains("notblocked"))
+                            {
+                                if (moveIsValid())
+                                {
+                                    if (loopPlace < numActions)
+                                    {
+                                        label3.Text = "Running: " + progItem;
+                                        checkAction(progItem);
+                                        await Task.Delay(700);
+                                        loopPlace++;
+                                    }
+                                    else
+                                    {
+                                        loopPlace = 0;
+                                    }
+
+                                }
+                                else { progPlace++; whileLoop = false; }
+
+                            }
+                            else if (condition.Contains("ispainted"))
+                            {
+                                if (grid[activeRow, activeColumn].getPaint())
+                                {
+                                    if (loopPlace < numActions)
+                                    {
+                                        label3.Text = "Running: " + progItem;
+                                        checkAction(progItem);
+                                        await Task.Delay(700);
+                                        loopPlace++;
+                                    }
+                                    else
+                                    {
+                                        loopPlace = 0;
+                                    }
+
+                                }
+                                else { progPlace++; whileLoop = false; }
+
+                            }
+                            else if (condition.Contains("notpainted"))
+                            {
+                                if (!grid[activeRow, activeColumn].getPaint())
+                                {
+                                    if (loopPlace < numActions)
+                                    {
+                                        label3.Text = "Running: " + progItem;
+                                        checkAction(progItem);
+                                        await Task.Delay(700);
+                                        loopPlace++;
+                                    }
+                                    else
+                                    {
+                                        loopPlace = 0;
+                                    }
+
+                                }
+                                else { progPlace++; whileLoop = false; }
+
+                            }
+                            else if (condition.Contains("leftblocked"))
+                            {
+                                if (direction == 1)
+                                {
+                                    if (grid[activeRow - 1, activeColumn].getBlocked())
+                                    {
+                                        if (loopPlace < numActions)
+                                        {
+                                            label3.Text = "Running: " + progItem;
+                                            checkAction(progItem);
+                                            await Task.Delay(700);
+                                            loopPlace++;
+                                        }
+                                        else
+                                        {
+                                            loopPlace = 0;
+                                        }
+
+                                    }
+                                    else { progPlace++; whileLoop = false; }
+                                }
+                                else if (direction == 2)
+                                {
+                                    if (grid[activeRow, activeColumn - 1].getBlocked())
+                                    {
+                                        if (loopPlace < numActions)
+                                        {
+                                            label3.Text = "Running: " + progItem;
+                                            checkAction(progItem);
+                                            await Task.Delay(700);
+                                            loopPlace++;
+                                        }
+                                        else
+                                        {
+                                            loopPlace = 0;
+                                        }
+
+                                    }
+                                    else { progPlace++; whileLoop = false; }
+                                }
+                                else if (direction == 3)
+                                {
+                                    if (grid[activeRow + 1, activeColumn].getBlocked())
+                                    {
+                                        if (loopPlace < numActions)
+                                        {
+                                            label3.Text = "Running: " + progItem;
+                                            checkAction(progItem);
+                                            await Task.Delay(700);
+                                            loopPlace++;
+                                        }
+                                        else
+                                        {
+                                            loopPlace = 0;
+                                        }
+
+                                    }
+                                    else { progPlace++; whileLoop = false; }
+                                }
+                                else
+                                {
+                                    if (grid[activeRow, activeColumn + 1].getBlocked())
+                                    {
+                                        if (loopPlace < numActions)
+                                        {
+                                            label3.Text = "Running: " + progItem;
+                                            checkAction(progItem);
+                                            await Task.Delay(700);
+                                            loopPlace++;
+                                        }
+                                        else
+                                        {
+                                            loopPlace = 0;
+                                        }
+
+                                    }
+                                    else { progPlace++; whileLoop = false; }
+                                }
+
+
+                            }
+                        }
+                        else if (ifTrue)
+                        {
+                            if (condition.Contains("notblocked"))
+                            {
+                                if (moveIsValid())
+                                {
+                                    ifHelper(progItem);
+
+
+                                }
+                                else
+                                {
+                                    progPlace++;
+                                    runElse = true;
+                                    getActions = true;
+                                    ifTrue = false;
+                                }
+
+                            }
+                            else if (condition.Contains("ispainted"))
+                            {
+                                if (grid[activeRow, activeColumn].getPaint())
+                                {
+                                    ifHelper(progItem);
+
+
+                                }
+                                else { progPlace++; ifTrue = false; }
+
+                            }
+                            else if (condition.Contains("notpainted"))
+                            {
+                                if (!grid[activeRow, activeColumn].getPaint())
+                                {
+                                    ifHelper(progItem);
+
+
+                                }
+                                else { progPlace++; ifTrue = false; }
+
+                            }
+                            else if (condition.Contains("leftblocked"))
+                            {
+                                if (direction == 1)
+                                {
+                                    if (grid[activeRow - 1, activeColumn].getBlocked())
+                                    {
+                                        ifHelper(progItem);
+
+
+                                    }
+                                    else { progPlace++; ifTrue = false; }
+                                }
+                                else if (direction == 2)
+                                {
+                                    if (grid[activeRow, activeColumn - 1].getBlocked())
+                                    {
+                                        ifHelper(progItem);
+
+
+                                    }
+                                    else { progPlace++; ifTrue = false; }
+                                }
+                                else if (direction == 3)
+                                {
+                                    if (grid[activeRow + 1, activeColumn].getBlocked())
+                                    {
+                                        ifHelper(progItem);
+
+
+                                    }
+                                    else { progPlace++; }
+                                }
+                                else
+                                {
+                                    if (grid[activeRow, activeColumn + 1].getBlocked())
+                                    {
+                                        ifHelper(progItem);
+
+
+                                    }
+                                    else { progPlace++; ifTrue = false; }
+                                }
+                            }
+                            else if (condition.Contains("rightblocked"))
+                            {
+                                if (direction == 1)
+                                {
+                                    if (grid[activeRow + 1, activeColumn].getBlocked())
+                                    {
+                                        ifHelper(progItem);
+
+
+                                    }
+                                    else { progPlace++; ifTrue = false; }
+                                }
+                                else if (direction == 2)
+                                {
+                                    if (grid[activeRow, activeColumn + 1].getBlocked())
+                                    {
+                                        ifHelper(progItem);
+
+
+                                    }
+                                    else { progPlace++; ifTrue = false; }
+                                }
+                                else if (direction == 3)
+                                {
+                                    if (grid[activeRow - 1, activeColumn].getBlocked())
+                                    {
+                                        ifHelper(progItem);
+
+
+                                    }
+                                    else { progPlace++; ifTrue = false; }
+                                }
+                                else
+                                {
+                                    if (grid[activeRow, activeColumn - 1].getBlocked())
+                                    {
+                                        ifHelper(progItem);
+
+
+                                    }
+                                    else { progPlace++; ifTrue = false; }
+                                }
+                            }
+                            else if (condition.Contains("behindblocked"))
+                            {
+                                if (direction == 1)
+                                {
+                                    if (grid[activeRow, activeColumn - 1].getBlocked())
+                                    {
+                                        ifHelper(progItem);
+
+
+                                    }
+                                    else { progPlace++; ifTrue = false; }
+                                }
+                                else if (direction == 2)
+                                {
+                                    if (grid[activeRow + 1, activeColumn].getBlocked())
+                                    {
+                                        ifHelper(progItem);
+
+
+                                    }
+                                    else { progPlace++; ifTrue = false; }
+                                }
+                                else if (direction == 3)
+                                {
+                                    if (grid[activeRow, activeColumn + 1].getBlocked())
+                                    {
+                                        ifHelper(progItem);
+
+
+                                    }
+                                    else { progPlace++; ifTrue = false; }
+                                }
+                                else
+                                {
+                                    if (grid[activeRow - 1, activeColumn].getBlocked())
+                                    {
+                                        ifHelper(progItem);
+
+
+                                    }
+                                    else { progPlace++; ifTrue = false; }
+                                }
+                            }
+                            getActions = true;
+                        }
+                        else if (forLoop)
+                        {
+
+                            if (!greaterthan)
+                            {
+                                if (up)
+                                {
+                                    if (loopVariable < int.Parse(condition.Split('<')[1]))
+                                    {
+                                        if (loopPlace < numActions)
+                                        {
+                                            label3.Text = "Running: " + progItem;
+                                            checkAction(progItem);
+                                            await Task.Delay(700);
+                                            if (loopPlace + 1 < numActions)
+                                            { loopPlace++; }
+                                            else
+                                            {
+                                                loopPlace = 0;
+                                                loopVariable++;
+                                                if (loopVariable >= int.Parse(condition.Split('<')[1]))
+                                                {
+                                                    progPlace++;
+                                                    forLoop = false;
+                                                }
+                                            }
+
+                                        }
+
+
+                                    }
+
+                                }
+                                else
+                                {
+                                    if (loopVariable < int.Parse(condition.Split('<')[1]))
+                                    {
+                                        if (loopPlace < numActions)
+                                        {
+                                            label3.Text = "Running: " + progItem;
+                                            checkAction(progItem);
+                                            await Task.Delay(700);
+                                            if (loopPlace + 1 < numActions)
+                                            { loopPlace++; }
+                                            else
+                                            {
+                                                loopPlace = 0;
+                                                loopVariable--;
+                                            }
+
+                                        }
+                                    }
+                                    else { progPlace++; }
+                                }
+                            }
+                            else
+                            {
+                                if (up)
+                                {
+                                    if (loopVariable > int.Parse(condition.Split('>')[1]))
+                                    {
+                                        if (loopPlace < numActions)
+                                        {
+                                            label3.Text = "Running: " + progItem;
+                                            checkAction(progItem);
+                                            await Task.Delay(700);
+                                            if (loopPlace + 1 < numActions)
+                                            { loopPlace++; }
+                                            else
+                                            {
+                                                loopPlace = 0;
+                                                loopVariable++;
+                                            }
+
+                                        }
+                                    }
+                                    else { progPlace++; }
+                                }
+                                else
+                                {
+                                    if (loopVariable > int.Parse(condition.Split('>')[1]))
+                                    {
+                                        if (loopPlace < numActions)
+                                        {
+                                            label3.Text = "Running: " + progItem;
+                                            checkAction(progItem);
+                                            await Task.Delay(700);
+                                            if (loopPlace + 1 < numActions)
+                                            { loopPlace++; }
+                                            else
+                                            {
+                                                loopPlace = 0;
+                                                loopVariable--;
+                                            }
+
+                                        }
+                                    }
+                                    else { progPlace++; }
+                                }
+                            }
+                        }
+                        else if (runElse)
+                        {
+                            ifHelper(progItem);
+                        }
+                        else
+                        {
+                            label3.Text = "Running: " + progItem;
+                            checkAction(progItem);
+                            await Task.Delay(700);
+                            progPlace++;
+                        }
+
+                    }
+                    else
+                    {
+                        label3.Text = "Stopped due to invalid move";
+                    }
+                }
+                else
+                {
+                    tableLayoutPanel1.BackColor = Color.YellowGreen;
+                    buttonRun.Enabled = true;
+                    buttonReset.Enabled = true;
+                    textBox1.Enabled = true;
+                    loopPlace = 0;
+                    loopVariable = 0;
+                    progPlace = 0;
+                    numActions = 0;
+                    label3.Text = "Done Running" + counter;
+                    Array.Clear(prog, 0, prog.Length);
+                    Array.Clear(loopActions, 0, loopActions.Length);
+                    progDone = true;
+
+                    //end of stepping
+                }
             }
+            buttonStep.Enabled = true;
+        }
+
+        private void buttonLesson_Click(object sender, EventArgs e)
+        {
+            Lesson l = new Lesson();
+            l.Show();
         }
     }
 }
