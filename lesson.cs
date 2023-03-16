@@ -12,9 +12,20 @@ namespace Prototype
 {
     public partial class Lesson : Form
     {
-        public Lesson()
+
+        private main mainForm;
+        public Lesson(main mf)
         {
             InitializeComponent();
+            this.mainForm = mf;
+        }
+
+        private void buttonRun_Click(object sender, EventArgs e)
+        {
+            string less = Prototype.Properties.Resources.Lesson1;
+
+           mainForm.textBox1.Text = less.Split(':')[1];
+           mainForm.button1_Click(sender, e);
         }
     }
 }

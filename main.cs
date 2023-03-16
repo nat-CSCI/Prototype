@@ -8,59 +8,85 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Timers;
-
+using System.IO;
 
 namespace Prototype
 {
     public partial class main : Form
-    {    
-        
-        int activeRow = 6;
-        int activeColumn = 0;
-        int direction = 1;
-        bool error = false;
-        int progPlace = 0;
-        int loopPlace = 0;
-        String s;
-        String[] prog;
-        bool ifTrue = false;
-        bool whileLoop = false;
-        bool getActions = false;                //Signifies if getting the contents of the loop or not
-        string condition = "";                  //Condition that needs to be met for loop
-        string[] x;                             //While loop string
-        string[] loopActions = new string[100]; //actions performed in loop
-        int numActions = 0;                     //Numbers of actions in a loop
-        int place = 0;                          //Place in loop
-        bool forLoop = false;
-        bool greaterthan = false;              //Show whether for loop is greater than or less than
-        int startValue = 0;                    //Starting value for a for loop
-        bool up = true;
-        int loopVariable = 0;
-        bool runElse = false;
-        bool progDone = false;
-        int counter = 0;
+    {
+
+        static int activeRow = 6;
+        static int activeColumn = 0;
+        static int direction = 1;
+        static bool error = false;
+        static int progPlace = 0;
+        static int loopPlace = 0;
+        static String s;
+        static String[] prog;
+        static bool ifTrue = false;
+        static bool whileLoop = false;
+        static bool getActions = false;                //Signifies if getting the contents of the loop or not
+        static string condition = "";                  //Condition that needs to be met for loop
+        static string[] x;                             //While loop string
+        static string[] loopActions = new string[100]; //actions performed in loop
+        static int numActions = 0;                     //Numbers of actions in a loop
+        static int place = 0;                          //Place in loop
+        static bool forLoop = false;
+        static bool greaterthan = false;              //Show whether for loop is greater than or less than
+        static int startValue = 0;                    //Starting value for a for loop
+        static bool up = true;
+        static int loopVariable = 0;
+        static bool runElse = false;
+        static bool progDone = false;
+        static int counter = 0;
 
         box[,] grid = new box[7, 7];
 
-        Image arrow = Image.FromFile("C:\\Users\\natdy\\OneDrive\\Desktop\\Prototype\\arrow.png");
-        Image blank = Image.FromFile("C:\\Users\\natdy\\OneDrive\\Desktop\\Prototype\\white.png");
-        Image block = Image.FromFile("C:\\Users\\natdy\\OneDrive\\Desktop\\Prototype\\blocked.png");
-        Image paint = Image.FromFile("C:\\Users\\natdy\\OneDrive\\Desktop\\Prototype\\black.png");
-        Image black = Image.FromFile("C:\\Users\\natdy\\OneDrive\\Desktop\\Prototype\\painted.png");
+        Image arrow = Prototype.Properties.Resources.arrow;
+        Image blank = Prototype.Properties.Resources.white;
+        Image block = Prototype.Properties.Resources.blocked;
+        Image paint = Prototype.Properties.Resources.black;
+        Image black = Prototype.Properties.Resources.painted;
 
         public main()
         {
             InitializeComponent();
+
+            for (int i = 0; i < 7; i++)
+            {
+                for (int j = 0; j < 7; j++)
+                {
+                    PictureBox p = new PictureBox();
+                    
+
+                    p.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                    | System.Windows.Forms.AnchorStyles.Left)
+                    | System.Windows.Forms.AnchorStyles.Right)));
+                    p.Image = blank;
+                    p.Size = new System.Drawing.Size(119, 118);
+                    p.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+                    p.Click += new System.EventHandler(this.pictureBox_block);
+                    grid[i, j] = new box(p, i, j);
+                }
+            }
         }
 
         private void main_Load(object sender, EventArgs e)
         {
-             
-            foreach (PictureBox pb in tableLayoutPanel1.Controls)
-            {
 
-                grid[tableLayoutPanel1.GetRow(pb), tableLayoutPanel1.GetColumn(pb)] = new box(pb, tableLayoutPanel1.GetRow(pb), tableLayoutPanel1.GetColumn(pb));
+            for (int i = 0; i < 7; i++)
+            {
+                for (int j = 0; j < 7; j++)
+                {
+                    tableLayoutPanel1.Controls.Add(grid[i,j].getPictureBox(), j, i);
+                }
             }
+
+            //foreach (PictureBox pb in tableLayoutPanel1.Controls)
+            //{
+
+            //    grid[tableLayoutPanel1.GetRow(pb), tableLayoutPanel1.GetColumn(pb)] = new box(pb, tableLayoutPanel1.GetRow(pb), tableLayoutPanel1.GetColumn(pb));
+            //}
 
             grid[6,0].setImage(arrow);
       
@@ -190,7 +216,7 @@ namespace Prototype
 
         //*******************************
 
-        private async void button1_Click(object sender, EventArgs e)
+        public async void button1_Click(object sender, EventArgs e)
         {
             s = textBox1.Text.ToString().ToLower();
             prog = s.Split('\n');
@@ -1569,8 +1595,9 @@ namespace Prototype
 
         private void buttonLesson_Click(object sender, EventArgs e)
         {
-            Lesson l = new Lesson();
+            Lesson l = new Lesson(this);
             l.Show();
+
         }
     }
 }
