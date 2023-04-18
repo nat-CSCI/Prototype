@@ -1,0 +1,27 @@
+Meet Karela!;
+Karela:
+Karela is the robot that you can control to navigate through the grid.
+Blocking boxes:
+Karela can move to any box on the grid unless you block it! Click on any box and it will turn red. When the box is red, Karela cannot move there.
+Running a program:
+Once you make a program, you can run it by clicking the run button and Karela will follow the commands in your program.
+Step through:
+If you want to see Karela do your commands one by one, click the step button to run your program one step at a time.
+Reset:
+Once Karela has followed your commands, you can press the reset button to bring her back to the start.
+;;
+Lesson 1: Moving;
+To get Karela to move through the grid, you must teach her the move command. This command will cause Karela to move forward one box in whatever direction she is facing. She will only move forward once per command so if you want her to move more than once, you must give her the move command more than once. The program below will move Karela forward 4 boxes:
+;Move
+Move
+Move
+Move
+;Lesson 2: Turning;
+Now that Karela is moving, we can now tell her to change her direction. There are three commands that will cause her to turn: TurnLeft, TurnRight, and TurnAround. 
+TurnLeft will cause Karela to turn to face the box on her left. 
+TurnRight will cause Karela to turn to face the box on her left. 
+TurnAround will cause Karela to turn to face the box behind her.
+The program below will cause Karela to turn left, turn right, then turn around. To see the commands one at a time, use the step button.
+;TurnLeft
+TurnRight
+TurnAround

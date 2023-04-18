@@ -130,8 +130,38 @@
   <data name="box" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\box.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="karela" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\karela.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Lesson1" xml:space="preserve">
-    <value>Test lesson body: move\r\n paint\r\n turnaround\r\n</value>
+    <value>Test lesson1 body: move\r\n paint\r\n turnaround\r\n</value>
+  </data>
+  <data name="Lesson2" xml:space="preserve">
+    <value>Test lesson2 body: move\r\n paint\r\n turnaround\r\n</value>
+  </data>
+  <data name="Lesson3" xml:space="preserve">
+    <value>Test lesson3 body: move\r\n paint\r\n turnaround\r\n</value>
+  </data>
+  <data name="Lesson4" xml:space="preserve">
+    <value>Test lesson4 body: move\r\n paint\r\n turnaround\r\n</value>
+  </data>
+  <data name="Lesson5" xml:space="preserve">
+    <value>Test lesson5 body: move\r\n paint\r\n turnaround\r\n</value>
+  </data>
+  <data name="Lesson6" xml:space="preserve">
+    <value>Test lesson6 body: move\r\n paint\r\n turnaround\r\n</value>
+  </data>
+  <data name="Lesson7" xml:space="preserve">
+    <value>Test lesson7 body: move\r\n paint\r\n turnaround\r\n</value>
+  </data>
+  <data name="Lesson8" xml:space="preserve">
+    <value>Test lesson8 body: move\r\n paint\r\n turnaround\r\n</value>
+  </data>
+  <data name="Lesson9" xml:space="preserve">
+    <value>Test lesson9 body: move\r\n paint\r\n turnaround\r\n</value>
+  </data>
+  <data name="Lessons" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Lessons.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
   <data name="painted" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\painted.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

@@ -30,15 +30,14 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(main));
             this.buttonRun = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.buttonLoad = new System.Windows.Forms.Button();
+            this.buttonSave = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBoxMove = new System.Windows.Forms.PictureBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBoxTurnAround = new System.Windows.Forms.PictureBox();
@@ -64,6 +63,10 @@
             this.buttonReset = new System.Windows.Forms.Button();
             this.buttonStep = new System.Windows.Forms.Button();
             this.buttonLesson = new System.Windows.Forms.Button();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMove)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTurnAround)).BeginInit();
@@ -97,23 +100,25 @@
             this.buttonRun.UseVisualStyleBackColor = true;
             this.buttonRun.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button3
+            // buttonLoad
             // 
-            this.button3.Location = new System.Drawing.Point(1656, 9);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(126, 43);
-            this.button3.TabIndex = 6;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
+            this.buttonLoad.Location = new System.Drawing.Point(1656, 9);
+            this.buttonLoad.Name = "buttonLoad";
+            this.buttonLoad.Size = new System.Drawing.Size(126, 43);
+            this.buttonLoad.TabIndex = 6;
+            this.buttonLoad.Text = "Load";
+            this.buttonLoad.UseVisualStyleBackColor = true;
+            this.buttonLoad.Click += new System.EventHandler(this.buttonLoad_Click);
             // 
-            // button4
+            // buttonSave
             // 
-            this.button4.Location = new System.Drawing.Point(1524, 6);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(126, 43);
-            this.button4.TabIndex = 7;
-            this.button4.Text = "button4";
-            this.button4.UseVisualStyleBackColor = true;
+            this.buttonSave.Location = new System.Drawing.Point(1524, 6);
+            this.buttonSave.Name = "buttonSave";
+            this.buttonSave.Size = new System.Drawing.Size(126, 43);
+            this.buttonSave.TabIndex = 7;
+            this.buttonSave.Text = "Save";
+            this.buttonSave.UseVisualStyleBackColor = true;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // label1
             // 
@@ -167,19 +172,6 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(875, 875);
             this.tableLayoutPanel1.TabIndex = 64;
-            // 
-            // textBox1
-            // 
-            this.textBox1.AllowDrop = true;
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.textBox1.Location = new System.Drawing.Point(29, 61);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(867, 657);
-            this.textBox1.TabIndex = 65;
-            this.textBox1.DragDrop += new System.Windows.Forms.DragEventHandler(this.textBox1_DragDrop);
-            this.textBox1.DragEnter += new System.Windows.Forms.DragEventHandler(this.textBox1_DragEnter);
             // 
             // panel1
             // 
@@ -461,13 +453,47 @@
             // 
             // buttonLesson
             // 
-            this.buttonLesson.Location = new System.Drawing.Point(848, 6);
+            this.buttonLesson.Location = new System.Drawing.Point(828, 6);
             this.buttonLesson.Name = "buttonLesson";
             this.buttonLesson.Size = new System.Drawing.Size(126, 43);
             this.buttonLesson.TabIndex = 72;
             this.buttonLesson.Text = "Lesson";
             this.buttonLesson.UseVisualStyleBackColor = true;
             this.buttonLesson.Click += new System.EventHandler(this.buttonLesson_Click);
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 25;
+            this.listBox1.Items.AddRange(new object[] {
+            "Introduction",
+            "Lesson 1",
+            "Lesson 2",
+            "Lesson 3",
+            "Lesson 4",
+            "Lesson 5",
+            "Lesson 6",
+            "Lesson 7"});
+            this.listBox1.Location = new System.Drawing.Point(163, 6);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(314, 54);
+            this.listBox1.TabIndex = 74;
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            // 
+            // saveFileDialog1
+            // 
+            this.saveFileDialog1.DefaultExt = "txt";
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.AllowDrop = true;
+            this.richTextBox1.Location = new System.Drawing.Point(21, 85);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(863, 654);
+            this.richTextBox1.TabIndex = 75;
+            this.richTextBox1.Text = "";
+            this.richTextBox1.DragDrop += new System.Windows.Forms.DragEventHandler(this.richTextBox1_DragDrop);
+            this.richTextBox1.DragEnter += new System.Windows.Forms.DragEventHandler(this.richTextBox1_DragEnter);
             // 
             // main
             // 
@@ -477,23 +503,26 @@
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(1796, 1064);
+            this.Controls.Add(this.richTextBox1);
+            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.buttonLesson);
             this.Controls.Add(this.buttonStep);
             this.Controls.Add(this.buttonReset);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.buttonSave);
+            this.Controls.Add(this.buttonLoad);
             this.Controls.Add(this.buttonRun);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.WindowsDefaultBounds;
             this.Text = "Form1";
+            this.Activated += new System.EventHandler(this.main_Activate);
+            this.Deactivate += new System.EventHandler(this.main_Deactivate);
             this.Load += new System.EventHandler(this.main_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMove)).EndInit();
             this.panel2.ResumeLayout(false);
@@ -523,15 +552,14 @@
 
         #endregion
         private System.Windows.Forms.Button buttonRun;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button buttonLoad;
+        private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBoxMove;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.ComponentModel.BackgroundWorker backgroundWorker2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        public System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.PictureBox pictureBoxTurnLeft;
@@ -557,6 +585,10 @@
         private System.Windows.Forms.Button buttonReset;
         private System.Windows.Forms.Button buttonStep;
         private System.Windows.Forms.Button buttonLesson;
+        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }
 

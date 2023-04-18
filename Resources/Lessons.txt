@@ -1,0 +1,84 @@
+Meet Karela!%
+Karela
+Karela is the robot that you can control to navigate through the grid.
+Blocking boxes
+Karela can move to any box on the grid unless you block it! Click on any box and it will turn red. When the box is red, Karela cannot move there.
+Running a program
+Once you make a program, you can run it by clicking the run button and Karela will follow the commands in your program.
+Step through
+If you want to see Karela do your commands one by one, click the step button to run your program one step at a time.
+Reset
+Once Karela has followed your commands, you can press the reset button to bring her back to the start.
+%%
+Lesson 1- Moving%
+To get Karela to move through the grid, you must teach her the move command. This command will cause Karela to move forward one box in whatever direction she is facing. She will only move forward once per command so if you want her to move more than once, you must give her the move command more than once. The program below will move Karela forward 4 boxes.
+%
+Move;
+Move;
+Move;
+Move;
+%Lesson 2- Turning%
+Now that Karela is moving, we can now tell her to change her direction. There are three commands that will cause her to turn- TurnLeft, TurnRight, and TurnAround. 
+TurnLeft will cause Karela to turn to face the box on her left. 
+TurnRight will cause Karela to turn to face the box on her left. 
+TurnAround will cause Karela to turn to face the box behind her.
+The program below will cause Karela to turn left, turn right, then turn around. To see the commands one at a time, use the step button.
+%TurnLeft;
+TurnRight;
+TurnAround;
+% Lesson 3- Paint/Erase%
+Karela also enjoys drawing pictures. If you give her the command Paint, she will paint the box she is currently sitting in. If you give her the command Erase, she will erase the box she is currently sitting in if it is painted. The program below has Karela paint a box and then move before going back to erase the box she painted.
+%Move;
+Paint;
+Move;
+TurnAround;
+Move;
+Erase;
+%
+Lesson 4- If-Statements
+%
+Karela can do any command according to certain conditions as well. Click the resources button to find the different conditions she can follow. If you want Karela to only move when one of these conditions is true, then you can use the if statement! To use the if statement you must put a condition between the parentheses (). Once you have a condition in the if statement line, put whatever you want her to do inside the {} and she will run those commands if the condition is true. Here is an example of Karela moving only if the next square is not blocked paint the square she is on- (To test this program try running it first without blocking her next move then try running again with the square in front of her blocked)
+%
+if(notBlocked);{
+move;
+}
+paint;
+
+%
+Lesson 5- If-Else Statements
+%
+Along with being able to tell Karela what to do when a condition is true, you can also tell her to do something else when that condition is not true. This uses an if-else statement. The if statement is the same as usual but after you put the term else and between {} put the commands you want her to do if the condition in the if statement is not true. She will only run what is the {} if the condition is not true. Here is an example where she moves forward and paints a square if her path is not blocked but if her path is blocked, she turns left, moves, then paints a square.
+%
+if(notBlocked);{
+Move;
+Paint;
+}
+Else{
+turnLeft;
+Move;
+Paint;
+}
+%
+Lesson 6- While Loops
+%
+Now what if we want Karela to repeat the same thing until a certain condition is not true? One way to do this is to use a while loop. To use this loop, you must but a condition between the parentheses, and Karela will perform the actions between the {} until that condition is no longer true. Here is an example of Karela moving a square, painting it, then moving forward before turning around. Once Karela turns around she will run a while loop until she reaches a square that is painted.
+%
+Move;
+Paint;
+Move;
+Move;
+Move;
+turnAround;
+while(notPainted);{
+move;
+};
+%
+Lesson 7- For Loops
+%
+A for loop will allow Karela to repeat commands a certain number of times. There are three parts given to the for loop between the parentheses. The last thing in the parentheses is our increment. In this spot, you put either a + or - for whether you want to count up by one or down by one. The next part which is separated by a colon is where we put our ending condition. This is where we put what value to count up or down to in the form of x > or < #. Finally, is the starting value where you tell the program what value to start counting up or down from. You put this in the form of x = #. For example, if you put for(x = 1: x < 4: +) then it would start at the value 1 and add 1 until x is greater than 4. You put the commands you want Karela to repeat in {}. For example, here is a program where Karela counts down from 4 moving and painting each time%
+for(x = 4: x > 0: -){
+Move;
+Paint;
+};
+
+%

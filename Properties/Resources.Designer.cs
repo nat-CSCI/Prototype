@@ -101,11 +101,110 @@ namespace Prototype.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Test lesson body: move\r\n paint\r\n turnaround\r\n.
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap karela {
+            get {
+                object obj = ResourceManager.GetObject("karela", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Test lesson1 body: move\r\n paint\r\n turnaround\r\n.
         /// </summary>
         internal static string Lesson1 {
             get {
                 return ResourceManager.GetString("Lesson1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Test lesson2 body: move\r\n paint\r\n turnaround\r\n.
+        /// </summary>
+        internal static string Lesson2 {
+            get {
+                return ResourceManager.GetString("Lesson2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Test lesson3 body: move\r\n paint\r\n turnaround\r\n.
+        /// </summary>
+        internal static string Lesson3 {
+            get {
+                return ResourceManager.GetString("Lesson3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Test lesson4 body: move\r\n paint\r\n turnaround\r\n.
+        /// </summary>
+        internal static string Lesson4 {
+            get {
+                return ResourceManager.GetString("Lesson4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Test lesson5 body: move\r\n paint\r\n turnaround\r\n.
+        /// </summary>
+        internal static string Lesson5 {
+            get {
+                return ResourceManager.GetString("Lesson5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Test lesson6 body: move\r\n paint\r\n turnaround\r\n.
+        /// </summary>
+        internal static string Lesson6 {
+            get {
+                return ResourceManager.GetString("Lesson6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Test lesson7 body: move\r\n paint\r\n turnaround\r\n.
+        /// </summary>
+        internal static string Lesson7 {
+            get {
+                return ResourceManager.GetString("Lesson7", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Test lesson8 body: move\r\n paint\r\n turnaround\r\n.
+        /// </summary>
+        internal static string Lesson8 {
+            get {
+                return ResourceManager.GetString("Lesson8", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Test lesson9 body: move\r\n paint\r\n turnaround\r\n.
+        /// </summary>
+        internal static string Lesson9 {
+            get {
+                return ResourceManager.GetString("Lesson9", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Meet Karela!:
+        ///Karela
+        ///Karela is the robot that you can control to navigate through the grid.
+        ///Blocking boxes
+        ///Karela can move to any box on the grid unless you block it! Click on any box and it will turn red. When the box is red, Karela cannot move there.
+        ///Running a program
+        ///Once you make a program, you can run it by clicking the run button and Karela will follow the commands in your program.
+        ///Step through
+        ///If you want to see Karela do your commands one by one, click the step button to run your program one [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Lessons {
+            get {
+                return ResourceManager.GetString("Lessons", resourceCulture);
             }
         }
         
