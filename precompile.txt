@@ -1,0 +1,86 @@
+private void preCompile()
+        {
+            int row = 0;
+            int col = 0;
+            int line = 0;
+            int[] close = new int[10]; //Holds lines of closing brackets
+            int closeCounter = 0;      //Counts the number of closing brackets
+            bool catchOpen = false;    //Finds the open bracket for a statement
+            foreach (string progItem in prog)
+            {
+                if (progItem.Contains("while"))
+                {
+                    compoundStatements[row, col] = 1; //Shows me it is a while
+                    col++;
+                    if (progItem.Contains("{"))
+                    {
+                       compoundStatements[row, col] = line; //Line number of open
+                    }
+                    else
+                    {
+                        catchOpen = true; 
+                    }
+              
+                }
+                else if (progItem.Contains("if"))
+                {
+                    compoundStatements[row, col] = 2; //Shows me it is a if
+                    col++;
+                    if (progItem.Contains("{"))
+                    {
+                        compoundStatements[row, col] = line; //Line number of open
+                        row++;
+                    }
+                    else
+                    {
+                        catchOpen = true;
+                    }
+                    
+                }
+                else if (progItem.Contains("else")) //shows me it is a else
+                {
+                    compoundStatements[row, col] = 3;
+                    col++;
+                    if (progItem.Contains("{"))
+                    {
+                        compoundStatements[row, col] = line; //Line number of open
+                        row++;
+                    }
+                    else
+                    {
+                        catchOpen = true;
+                    }
+                    
+                }
+                else if (progItem.Contains("for"))
+                {
+                    compoundStatements[row, col] = 4;//Shows me it is a for
+                    col++;
+                    if (progItem.Contains("{"))
+                    {
+                        compoundStatements[row, col] = line; //Line number of open
+                        row++;
+                    }
+                    else
+                    {
+                        catchOpen = true;
+                    }
+                 
+                }
+                else if (catchOpen) //Catches open bracket
+                {
+                    compoundStatements[row, col] = line;
+                    row++;
+                    catchOpen = false;
+                }
+                else if (progItem.Contains("}")) 
+                {
+                    close[closeCounter] = line; //Stores line number of closing bracket
+                    closeCounter++; //Adds to closing bracket counter
+                }
+                line++;
+                if(col >= 1 && !catchOpen) //Reset columns if row is done
+                {
+                    col = 0;
+                }
+            }

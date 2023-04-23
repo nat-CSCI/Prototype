@@ -192,7 +192,7 @@ namespace Prototype.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Meet Karela!:
+        ///   Looks up a localized string similar to Meet Karela!%
         ///Karela
         ///Karela is the robot that you can control to navigate through the grid.
         ///Blocking boxes

@@ -38,6 +38,8 @@ namespace Prototype
         static int loopVariable = 0;      //The varible used to increment a for loop
         static bool runElse = false;      //Indicates whether or not the else needs to run
 
+        static int[,] compoundStatements = new int[10, 4];
+
         //************************************* 
         // Variables to keep track of place in grid and program
         //************************************
@@ -54,6 +56,10 @@ namespace Prototype
         static bool progDone = false;     //Indicates whether the program has run completely or not
         static bool error = false;
         public bool progSet = false;
+        int progLength = 0;
+        int tableCol = 0;
+        int tableRow = 0;
+        
 
         //************************************* 
         // Variables for saving/opening files and opening lessons
@@ -170,19 +176,22 @@ namespace Prototype
             char c = richTextBox1.GetCharFromPosition(cp);
             label1.Text = index.ToString();
 
-            if(richTextBox1.GetCharFromPosition(cp) == '\0')
+            if (richTextBox1.GetCharFromPosition(cp) == '\0')
             {
-                richTextBox1.Text = richTextBox1.Text.Insert(richTextBox1.SelectionStart, e.Data.GetData(DataFormats.Text).ToString()+"\n");
-            
-            }
-            //else if (richTextBox1.GetCharFromPosition(cp) != '\n')
-            //{
-            //    richTextBox1.Text = richTextBox1.Text.Insert(richTextBox1.SelectionStart, "\n" + e.Data.GetData(DataFormats.Text).ToString());
+                label1.Text = "found null" + index.ToString();
+                richTextBox1.Text = richTextBox1.Text.Insert(richTextBox1.SelectionStart, e.Data.GetData(DataFormats.Text).ToString());
 
-            //}
+            }
+            else if (richTextBox1.GetCharFromPosition(cp) == '\n')
+            {
+                label1.Text = "found newline" + index.ToString();
+                richTextBox1.Text = richTextBox1.Text.Insert(richTextBox1.SelectionStart + 1, e.Data.GetData(DataFormats.Text).ToString());
+
+            }
             else
             {
-                richTextBox1.Text = richTextBox1.Text.Insert(richTextBox1.SelectionStart, "\n" + e.Data.GetData(DataFormats.Text).ToString());
+                label1.Text = "adding newline" + index.ToString();
+                richTextBox1.Text = richTextBox1.Text.Insert(richTextBox1.SelectionStart, e.Data.GetData(DataFormats.Text).ToString());
             }
             richTextBox1.Select(richTextBox1.Text.Length, 0);
 
@@ -193,39 +202,39 @@ namespace Prototype
             PictureBox pb = (PictureBox)sender;
             if (pb.Name == "pictureBoxMove")
             {
-                pb.DoDragDrop("Move;\n", DragDropEffects.All);
+                pb.DoDragDrop("Move\n", DragDropEffects.All);
             }
             else if (pb.Name == "pictureBoxTurnLeft")
             {
-                pb.DoDragDrop("TurnLeft;\n", DragDropEffects.All);
+                pb.DoDragDrop("TurnLeft\n", DragDropEffects.All);
             }
             else if (pb.Name == "pictureBoxTurnRight")
             {
-                pb.DoDragDrop("TurnRight;\n", DragDropEffects.All);
+                pb.DoDragDrop("TurnRight\n", DragDropEffects.All);
             }
             else if (pb.Name == "pictureBoxTurnAround")
             {
-                pb.DoDragDrop("TurnAround;\n", DragDropEffects.All);
+                pb.DoDragDrop("TurnAround\n", DragDropEffects.All);
             }
             else if (pb.Name == "pictureBoxPaint")
             {
-                pb.DoDragDrop("Paint;\n", DragDropEffects.All);
+                pb.DoDragDrop("Paint\n", DragDropEffects.All);
             }
             else if (pb.Name == "pictureBoxErase")
             {
-                pb.DoDragDrop("Erase;\n", DragDropEffects.All);
+                pb.DoDragDrop("Erase\n", DragDropEffects.All);
             }
             else if (pb.Name == "pictureBoxWhile")
             {
-                pb.DoDragDrop("while();{ \r};", DragDropEffects.All);
+                pb.DoDragDrop("while(){ \n}\n", DragDropEffects.All);
             }
             else if (pb.Name == "pictureBoxFor")
             {
-                pb.DoDragDrop("for( : : );{\r};", DragDropEffects.All);
+                pb.DoDragDrop("for( : : ){\n}\n", DragDropEffects.All);
             }
             else if (pb.Name == "pictureBoxIf")
             {
-                pb.DoDragDrop("if( );{\r};", DragDropEffects.All);
+                pb.DoDragDrop("if( ){\n}\n", DragDropEffects.All);
             }
             else if (pb.Name == "pictureBoxPainted")
             {
@@ -260,7 +269,8 @@ namespace Prototype
         public void setProg()
         {
             s = richTextBox1.Text.ToString().ToLower();
-            prog = s.Split(';');
+            prog = s.Split('\n');
+            
         }
 
         public async void button1_Click(object sender, EventArgs e)
@@ -297,8 +307,20 @@ namespace Prototype
                 tableLayoutPanel1.BackColor = Color.Green;
                 await Task.Delay(700);
                 int startIndex = 0;
-
+                preCompile();
+                run();
+                tableLayoutPanel1.BackColor = Color.YellowGreen;
+                buttonRun.Enabled = true;
+                buttonReset.Enabled = true;
+                buttonStep.Enabled = true;
+                richTextBox1.Enabled = true;
+                label3.Text = "Done Running";
+                progDone = true;
+                running = false;
+                progSet = false;
                 //Go through each item in the program
+
+                /*
                 foreach (string progItem in prog)
                 {
                     
@@ -879,6 +901,7 @@ namespace Prototype
                         richTextBox1.SelectionBackColor = System.Drawing.Color.Transparent;
                     
                 }
+                */
 
                 //Reenable buttons and change display
 
@@ -959,7 +982,7 @@ namespace Prototype
                             label3.Text = "Running: " + progItem;
                             forLoop = true;
                             getActions = true;
-                            x = progItem.Split(';');
+                            x = progItem.Split(':');
                             condition = x[1];
                             string y = x[0];
                             startValue = int.Parse(x[0].Split('=')[1]);
@@ -1433,7 +1456,10 @@ namespace Prototype
                             richTextBox1.SelectionBackColor = System.Drawing.Color.Transparent;
                             progPlace++;
                         }
-
+                        else
+                        {
+                            progPlace++;
+                        }
                     }
                     else
                     {
@@ -1485,6 +1511,276 @@ namespace Prototype
         //************************************* 
         // Helper functions
         //************************************
+        
+        public async void run()
+        {
+            int line = 0;
+            string progItem;
+            int startIndex = 0;
+            while(line < progLength)
+            {
+                progItem = prog[line];
+                if (inTable(line) )
+                {
+                    if (tableCol == 1)
+                    {
+                        if (compoundStatements[returnRow(line), 0] == 1)
+                        {
+                            x = progItem.Split('(');
+                            condition = x[1];
+
+                            if (condition.Contains("notblocked"))
+                            {
+                                if (moveIsValid())
+                                {
+                                    line++;
+                                }
+                                else
+                                {
+                                    line = compoundStatements[returnRow(line), 2];
+                                }
+
+                            }
+                            else if (condition.Contains("ispainted"))
+                            {
+                                if (grid[activeRow, activeColumn].getPaint())
+                                {
+                                    runAction(progItem, 0);
+                                    await Task.Delay(700);
+
+                                }
+
+                            }
+                            else if (condition.Contains("notpainted"))
+                            {
+                                if (!grid[activeRow, activeColumn].getPaint())
+                                {
+                                    runAction(progItem, 0);
+                                    await Task.Delay(700);
+
+                                }
+
+                            }
+                            else if (condition.Contains("leftblocked"))
+                            {
+                                if (direction == 1)
+                                {
+                                    if (grid[activeRow - 1, activeColumn].getBlocked())
+                                    {
+                                        runAction(progItem, 0);
+                                        await Task.Delay(700);
+
+                                    }
+                                }
+                                else if (direction == 2)
+                                {
+                                    while (grid[activeRow, activeColumn - 1].getBlocked())
+                                    {
+                                        for (int i = 0; i < numActions; i++)
+                                        {
+                                            runAction(loopActions[i], i);
+                                            await Task.Delay(700);
+                                        }
+
+                                    }
+                                }
+                                else if (direction == 3)
+                                {
+                                    while (grid[activeRow + 1, activeColumn].getBlocked())
+                                    {
+                                        for (int i = 0; i < numActions; i++)
+                                        {
+                                            runAction(loopActions[i], i);
+                                            await Task.Delay(700);
+                                        }
+
+                                    }
+                                }
+                                else
+                                {
+                                    while (grid[activeRow, activeColumn + 1].getBlocked())
+                                    {
+
+
+                                    }
+                                }
+
+
+
+
+
+                            }
+                        }
+                        else if (compoundStatements[returnRow(line), 0] == 2)
+                        {
+                            //Check bools
+                        }
+                        else
+                        {
+                            //Check bool for a for loop
+                        }
+                    }
+                    else
+                    {
+                        if (condition.Contains("notblocked"))
+                        {
+                            if (moveIsValid())
+                            {
+                                line = compoundStatements[returnRow(line), 1];
+                            }
+                            else
+                            {
+                                line = compoundStatements[returnRow(line), 2]+1;
+                            }
+
+                        }
+                    }
+                    
+                   
+                }
+                else
+                {
+                    startIndex = richTextBox1.GetFirstCharIndexFromLine(progPlace);
+                    richTextBox1.Select(startIndex, richTextBox1.Lines[progPlace].Length);
+                    richTextBox1.SelectionBackColor = System.Drawing.Color.Yellow;
+                    label3.Text = "Running: " + progItem;
+                    runAction(progItem, 0);
+                    await Task.Delay(1000);
+                    line++;
+                    richTextBox1.SelectionBackColor = System.Drawing.Color.Transparent;
+                }
+
+
+            }
+
+            tableLayoutPanel1.BackColor = Color.YellowGreen;
+            buttonRun.Enabled = true;
+            buttonReset.Enabled = true;
+            buttonStep.Enabled = true;
+            richTextBox1.Enabled = true;
+            label3.Text = "Done Running";
+            progDone = true;
+            running = false;
+            progSet = false;
+
+        }
+
+        private int returnRow(int lineNum)
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                if (compoundStatements[i, 1] == lineNum || compoundStatements[i, 2] == lineNum)
+                {
+                    return i;
+                }
+                
+            }
+            return -1;
+        }
+        private bool inTable(int lineNum)
+        {
+            for(int i =0; i< 10; i++)
+            {
+                if(compoundStatements[i , 1] == lineNum)
+                {
+                    tableRow = i;
+                    tableCol = 1;
+                    return true;
+                }
+                else if(compoundStatements[i, 2] == lineNum)
+                {
+                    tableRow = i;
+                    tableCol = 2;
+                    return true;
+                }
+            }
+
+            return false;
+
+        }
+
+        private void preCompile()
+        {
+            int row = 0;
+            int col = 0;
+            int line = 0;
+            int[] close = new int[10]; //Holds lines of closing brackets
+           
+           
+            for(int i =0; i < 10; i++)
+            {
+                compoundStatements[i, 2] = -1;
+            }
+
+            foreach (string progItem in prog)
+            {
+                
+                if (progItem.Contains("while"))
+                {
+                    compoundStatements[row, col] = 1; //Shows me it is a while
+                    col++;
+                    compoundStatements[row, col] = line; //Line number of open
+                    row++;
+                    
+              
+                }
+                else if (progItem.Contains("if"))
+                {
+                    compoundStatements[row, col] = 2; //Shows me it is a if
+                    col++;
+                    
+                    compoundStatements[row, col] = line; //Line number of open
+                    row++;
+                    
+                    
+                }
+                else if (progItem.Contains("else")) //shows me it is a else
+                {
+                    compoundStatements[row, col] = 3;
+                    col++;
+                    
+                    compoundStatements[row, col] = line; //Line number of open
+                    row++;
+                   
+                    
+                }
+                else if (progItem.Contains("for"))
+                {
+                    compoundStatements[row, col] = 4;//Shows me it is a for
+                    col++;
+                  
+                    compoundStatements[row, col] = line; //Line number of open
+                    row++;
+                   
+                 
+                }
+                else if (progItem.Contains("}")) 
+                {
+                    //Start at bottom and find the first zero starting at current row
+
+                    for(int i = row-1; i >= 0; i--)
+                    {
+                        if(compoundStatements[i, 2] == -1)
+                        {
+                            compoundStatements[i, 2] = line;
+                            break;
+                        }
+                    }
+
+                
+                }
+
+                line++;
+
+                if(col >= 1) //Reset columns if row is done
+                {
+                    col = 0;
+                }
+            }
+
+            progLength = line;
+
+        }
         private int nextRow()
         {
             if (direction == 2)
@@ -1598,17 +1894,16 @@ namespace Prototype
         }
 
         public async void runAction(string action, int place) {
-            int p = progPlace + place - numActions;
-            int startIndex = richTextBox1.GetFirstCharIndexFromLine(p - 1);
-            richTextBox1.Select(startIndex, richTextBox1.Lines[p - 1].Length);
-            richTextBox1.SelectionBackColor = System.Drawing.Color.Yellow;
+            //int p = progPlace + place - numActions;
+            //int startIndex = richTextBox1.GetFirstCharIndexFromLine(p - 1);
+            //richTextBox1.Select(startIndex, richTextBox1.Lines[p - 1].Length);
+            //richTextBox1.SelectionBackColor = System.Drawing.Color.Yellow;
 
             label3.Text = "Running: " + action;
             checkAction(action);
             await Task.Delay(1000);
-            richTextBox1.SelectionBackColor = System.Drawing.Color.Transparent;
+            //richTextBox1.SelectionBackColor = System.Drawing.Color.Transparent;
         }
-
        
 
         //************************************* 

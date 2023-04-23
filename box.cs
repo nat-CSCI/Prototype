@@ -18,9 +18,9 @@ namespace Prototype
         int row, col;
         bool blocked;
         bool painted;
-        Image paint = Image.FromFile("C:\\Users\\natdy\\OneDrive\\Desktop\\Prototype\\black.png");
-        Image blank = Image.FromFile("C:\\Users\\natdy\\OneDrive\\Desktop\\Prototype\\white.png");
-       public box()
+        Image paint = Prototype.Properties.Resources.black;
+        Image blank = Prototype.Properties.Resources.white;
+        public box()
         {
             image = blank;
             row = 0;
